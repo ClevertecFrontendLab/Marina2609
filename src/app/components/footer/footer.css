@@ -1,0 +1,113 @@
+.footer-container {
+  height: 56px;
+  flex: 0 0 auto;
+  margin-top: 61px;
+  padding: 0 165px;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #bfc4c9;
+  width: 100%;
+}
+
+.footer-logo {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+
+.footer-logo > p {
+  padding: 14px 0 16px;
+}
+
+.icon-soceal {
+  display: flex;
+  gap: 28px;
+  padding: 18px 3px;
+}
+
+.icon-facebook {
+  height: 18px;
+  width: 9.9px;
+  background-image: url('../../../../public/assets/img/facebook.svg');
+  background-repeat: no-repeat;
+  margin: 1px 6px 0 0;
+}
+
+.icon-instagram {
+  height: 18px;
+  width: 18px;
+  background-image: url('../../../../public/assets/img/instagram.svg');
+  background-repeat: no-repeat;
+  margin-top: 1px;
+}
+
+.icon-vk {
+  height: 13.2px;
+  width: 22px;
+  background-image: url('../../../../public/assets/img/vk.svg');
+  background-repeat: no-repeat;
+  margin-top: 5px;
+}
+
+.icon-linkedin {
+  height: 19px;
+  width: 18px;
+  background-image: url('../../../../public/assets/img/linkedin.svg');
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1264px) {
+  .footer-container {
+    padding: 0 105px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    margin: 61px 64px 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .footer-container {
+    margin: 24px 20px 0;
+    padding: 0;
+  }
+
+  .footer-wrapper {
+    display: block;
+  }
+
+  .footer-logo {
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 2px 40px 0;
+  }
+
+  .icon-soceal {
+    justify-content: center;
+    padding: 2px 0 0px 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer-container {
+    margin: 23px 16px 0;
+  }
+
+  .footer-logo {
+    padding: 2px 40px 0 36px;
+  }
+
+  .icon-soceal {
+    padding: 2px 0 0px 0px;
+  }
+}

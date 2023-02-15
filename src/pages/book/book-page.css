@@ -1,0 +1,774 @@
+body {
+  max-width: 1440px;
+  width: 100%;
+}
+
+.book-page {
+  padding: 0;
+}
+
+.navigation-menu {
+  background-color: #f9f9fa;
+  height: 64px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  padding: 0 165px;
+  max-width: 1440px;
+}
+
+.slash {
+  margin: 0 12px 0 13px;
+  width: 9px;
+  height: 18px;
+  background-image: url('../../../public/assets/img/slash.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.book-container {
+  padding: 42px 165px 48px;
+  position: relative;
+}
+
+.book-content {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-areas:
+    'sl des'
+    'sl ab';
+  padding-bottom: 42px;
+}
+
+.book-slider {
+  width: 445px;
+  height: 696px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cover-container {
+  background-image: url('../../../public/assets/img/noBookCoverFont.png');
+  background-repeat: no-repeat;
+}
+
+.cat {
+  width: 445px;
+  height: 593px;
+  background-image: url('../../../public/assets/img/cat.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.book-description {
+  padding-left: 30px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0.1px;
+  color: #363636;
+  padding-bottom: 24px;
+}
+
+.autor {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  padding-bottom: 32px;
+}
+
+.reserve {
+  height: 52px;
+  width: 350px;
+  border-radius: 30px;
+  background-color: #f8660a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  border: none;
+  margin-bottom: 62px;
+}
+
+.busy {
+  color: #a7a7a7;
+  background: #f9f9fa;
+  border: 1px solid #bfc4c9;
+  padding-left: 1px;
+}
+
+.booked {
+  color: #363636;
+  background-color: #fff;
+  border: 1px solid #bfc4c9;
+  padding-left: 2px;
+}
+
+.about-book {
+  padding-left: 30px;
+}
+
+.about {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: #363636;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.about-content {
+  padding-top: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+
+.about-content > p {
+  padding-bottom: 26px;
+}
+
+.rating-title,
+.information-title,
+.review,
+.about {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+  color: #363636;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ebebeb;
+  width: 350px;
+}
+
+.not-review {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+  color: #363636;
+  padding-bottom: 27px;
+  width: 350px;
+}
+
+.no-star {
+  display: flex;
+  gap: 16px;
+  padding-top: 18px;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 16px;
+  padding: 19px 0 0 2px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+
+.rating-count {
+  padding-left: 12px;
+}
+
+.book-info {
+  padding-top: 64px;
+  padding-bottom: 45px;
+}
+
+.information {
+  display: flex;
+  column-gap: 142px;
+  padding-top: 17px;
+}
+
+.left-content {
+  width: 335px;
+  display: flex;
+}
+
+.right-content {
+  width: 635px;
+  display: flex;
+}
+
+.left-column {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+
+.right-column {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+
+.information-publishing,
+.information-year,
+.information-pages,
+.information-binding,
+.information-format,
+.information-category,
+.information-weight,
+.information-isbn,
+.information-manufacturer {
+  display: flex;
+  padding-bottom: 16px;
+}
+
+.publishing,
+.year,
+.pages,
+.binding,
+.format,
+.category,
+.weight,
+.isbn,
+.manufacturer {
+  padding-left: 71px;
+  padding-bottom: 16px;
+}
+
+.review-count {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  padding-left: 7px;
+}
+
+.review-header {
+  display: flex;
+  column-gap: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #727272;
+  padding: 18px 0 16px 0;
+  align-items: center;
+}
+
+.img-autor {
+  width: 32px;
+  height: 32px;
+  background-image: url('../../../public/assets/img/reviewer-avatar.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.review-stars {
+  display: flex;
+  gap: 16px;
+  padding-left: 2px;
+}
+
+.review-not-description {
+  padding: 0px 0 29px 0;
+}
+
+.review-description {
+  padding: 21px 0 8px 0;
+  max-width: 730px;
+  width: 100%;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+
+.btn-review {
+  position: absolute;
+  height: 52px;
+  width: 350px;
+  border-radius: 30px;
+  background-color: #f8660a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  align-items: center;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 17px;
+}
+
+.book-title {
+  display: -webkit-box;
+}
+
+.down {
+  background-image: url('../../../public/assets/img/down.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-left: 29px;
+}
+
+.up {
+  background-image: url('../../../public/assets/img/up.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-left: 29px;
+}
+
+.row-span-3 {
+  grid-row: span 3 / span 3;
+  grid-column-start: 1;
+  grid-area: sl;
+}
+
+.col-span-2 {
+  grid-area: des;
+}
+
+.row-span-2 {
+  grid-area: ab;
+}
+
+@media screen and (max-width: 1240px) {
+  .book-container {
+    padding: 42px 64px 48px;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .book-container {
+    padding: 51px 66px 48px;
+  }
+
+  .book-title {
+    flex-wrap: wrap;
+  }
+
+  .navigation-menu {
+    padding: 0 66px;
+    height: 88px;
+    margin-top: 11px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+  }
+
+  .book-container {
+    padding: 49px 66px 48px;
+  }
+
+  .title {
+    padding: 1px 0 31px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.1px;
+    color: #363636;
+  }
+
+  .autor {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: #a7a7a7;
+    padding-bottom: 33px;
+  }
+
+  .reserve {
+    margin-bottom: 48px;
+    width: 306px;
+    height: 52px;
+  }
+
+  .book-description {
+    padding-left: 31px;
+  }
+
+  .rating-title,
+  .information-title,
+  .review {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .rating-count {
+    padding-left: 9px;
+  }
+
+  .book-info {
+    padding-top: 54px;
+  }
+
+  .left-column {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .right-column {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    width: 88px;
+  }
+
+  .publishing,
+  .year,
+  .pages,
+  .binding,
+  .format,
+  .category,
+  .weight,
+  .isbn,
+  .manufacturer {
+    padding-left: 33px;
+  }
+
+  .information {
+    padding-top: 16px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .swiper {
+    width: 136px;
+    height: 238px;
+  }
+
+  .book-slider {
+    width: 136px;
+    height: 238px;
+  }
+
+  .book-content {
+    padding-bottom: 26px;
+  }
+
+  .mySwiper {
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .book-content {
+    grid-template-areas:
+      'sl des'
+      'ab ab';
+  }
+
+  .swiper-slide img {
+    height: 198px;
+    border-radius: 10px;
+  }
+
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+    grid-column-start: 1;
+  }
+
+  .about-book {
+    padding: 48px 0 0;
+  }
+
+  .right-column {
+    width: 180px;
+  }
+
+  .information {
+    padding-top: 15px;
+    column-gap: 49px;
+  }
+
+  .review-count {
+    display: none;
+  }
+
+  .review {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    padding-bottom: 16px;
+  }
+
+  .review-description {
+    font-size: 15px;
+  }
+
+  .book-container {
+    padding: 49px 66px 0;
+  }
+
+  .btn-review {
+    max-width: 640px;
+    width: 100%;
+    height: 52px;
+    margin: 11px 0 -14px;
+    position: relative;
+  }
+
+  .book-info {
+    padding-bottom: 36px;
+  }
+
+  .mySwiper {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .book-container {
+    padding: 49px 24px 0;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .information {
+    column-gap: 2px;
+    flex-wrap: wrap;
+  }
+
+  .about-content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .book-content {
+    grid-template-areas:
+      'sl'
+      'des'
+      'ab';
+  }
+
+  .book-slider {
+    margin: 0 auto;
+    width: 188px;
+    height: 300px;
+  }
+
+  .book-description {
+    padding: 16px 0 0;
+  }
+
+  .about-book {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .about {
+    margin: 0 auto;
+  }
+
+  .about-content {
+    margin: 0 auto;
+  }
+
+  .book-content {
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .information {
+    flex-wrap: wrap;
+    padding-top: 8px;
+  }
+
+  .left-content,
+  .right-content {
+    gap: 9px;
+  }
+}
+
+@media screen and (max-width: 486px) {
+  .rating-title,
+  .information-title,
+  .review,
+  .about {
+    width: 100%;
+    padding-bottom: 7px;
+  }
+
+  .book-title {
+    padding: 0 10px;
+  }
+
+  .navigation-menu {
+    padding: 20px 0;
+    height: 84px;
+    margin-top: 32px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    height: 92px;
+  }
+
+  .about {
+    width: 267px;
+    margin: 0 24px;
+    padding: 0 0 7px;
+  }
+
+  .about,
+  .rating-title,
+  .review {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    padding-bottom: 7px;
+  }
+
+  .about-content {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    padding-top: 9px;
+  }
+
+  .about-content > p {
+    padding: 0 24px 23px;
+  }
+
+  .reserve,
+  .btn-review {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 42px;
+  }
+
+  .btn-review {
+    position: relative;
+    margin: 0;
+  }
+
+  .book-title {
+    flex-wrap: wrap;
+  }
+
+  .book-image {
+    width: 188px;
+    height: 259px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    padding: 0 24px 31px;
+  }
+
+  .book-description {
+    margin-top: 16px;
+  }
+
+  .autor {
+    padding-top: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 0 24px 42px;
+  }
+
+  .information-publishing,
+  .information-year,
+  .information-pages,
+  .information-binding,
+  .information-format,
+  .information-category,
+  .information-weight,
+  .information-isbn,
+  .information-manufacturer {
+    display: flex;
+    padding-bottom: 16px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .right-column {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .swiper {
+    width: 188px;
+    height: 300px;
+  }
+
+  .swiper-slide img {
+    height: 260px;
+  }
+
+  .information-category,
+  .category {
+    display: none;
+  }
+
+  .book-description {
+    padding: 0 0 0 5px;
+  }
+
+  .reserve,
+  .btn-review {
+    height: 40px;
+    width: 288px;
+  }
+
+  .rating {
+    padding-left: 5px;
+  }
+
+  .rating-stars {
+    padding: 15px 0 0 2px;
+    gap: 26px;
+  }
+
+  .book-info {
+    padding: 29px 5px;
+  }
+
+  .information-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
