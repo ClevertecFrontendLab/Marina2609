@@ -12,20 +12,20 @@ export const Cards = (props) => {
 
   return (
     <div className={props.state === 'grid' ? 'books-grid' : 'books-list'}>
-      {props.cards.length === 0 ? (
+      {props.books.length === 0 ? (
         <div>В данном разделе нет книг</div>
       ) : (
         <React.Fragment>
-          {props.cards.map((card) => (
-            <NavLink to={`/book/${card.id}`} state={{ props: card }} aria-hidden={false} onClick={asideClose}>
+          {props.books.map((book) => (
+            <NavLink to={`/book/${book.id}`} state={{ props: book }} aria-hidden={false} onClick={asideClose}>
               <div
                 data-test-id='card'
                 className={props.state === 'grid' ? 'book-grid-container' : 'book-list-container'}
               >
                 <div className={props.state === 'grid' ? '' : 'book-cover'}>
-                  {card.imgSrc.length !== 0 ? (
+                  {book.image !== null ? (
                     <img
-                      src={card.imgSrc[0].img}
+                      src={`https://strapi.cleverland.by${book.image.url}`}
                       className={props.state === 'grid' ? 'book-grid-cover' : 'book-list-cover'}
                       alt='no book cover'
                     />
@@ -34,10 +34,9 @@ export const Cards = (props) => {
                       <div className={props.state === 'grid' ? 'grid-cover-cat' : 'list-cover-cat'} />
                     </div>
                   )}
-
                   <div className={props.state === 'grid' ? 'grid-description' : 'description'}>
-                    <div className={props.state === 'grid' ? 'grid-rating' : 'list-rating'}>
-                      {card.rating === 0 ? (
+                    {/* <div className={props.state === 'grid' ? 'grid-rating' : 'list-rating'}>
+                      {book.rating === 0 ? (
                         <div className='not-star'>ещё нет оценок</div>
                       ) : (
                         <div className='stars'>
@@ -48,22 +47,24 @@ export const Cards = (props) => {
                           <div className='star unchecked' />
                         </div>
                       )}
-                    </div>
+                    </div> */}
                     <div className={props.state === 'grid' ? 'book-title-container' : ''}>
-                      <div className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}>{card.title}</div>
+                      <div className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}>{book.title}</div>
                     </div>
-                    <div className={props.state === 'grid' ? 'book-grid-autor' : 'book-list-autor'}>{card.autor}</div>
+                    <div className={props.state === 'grid' ? 'book-grid-autor' : 'book-list-autor'}>
+                      {book.authors}, {book.issueYear}
+                    </div>
 
-                    {card.reserve === null ? (
+                    {/* {book.reserve === null ? (
                       <button type='button' className={props.state === 'grid' ? 'grid-reserve' : 'list-reserve'}>
                         Забронировать
                       </button>
-                    ) : card.reserve === 'busy' ? (
+                    ) : book.reserve === 'busy' ? (
                       <button
                         type='button'
                         className={props.state === 'grid' ? 'grid-reserve  grid-busy' : 'list-reserve  list-busy'}
                       >
-                        Занята до {card.date}
+                        Занята до {book.date}
                       </button>
                     ) : (
                       <button
@@ -72,7 +73,7 @@ export const Cards = (props) => {
                       >
                         Забронирована
                       </button>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>

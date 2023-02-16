@@ -1,10 +1,8 @@
-import { legacy_createStore as createStore } from 'redux';
-import { combineReducers } from '@reduxjs/toolkit';
+import { applyMiddleware, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
 
-import { booksReducer } from './books/books-reducer';
+import { Reducer } from './reducer';
 
-const rootReducer = combineReducers({
-  books: booksReducer,
-});
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(rootReducer);
+export const store = createStore(Reducer, composeEnhancers(applyMiddleware(thunk)));

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+
+import { getCategories } from '../../../redux/actions/actions';
 
 import './aside.css';
 
@@ -9,6 +12,15 @@ export const Aside = (props) => {
   const [arrow, setArrow] = useState('arrow-up');
   const [isGenresOpen, setIsGenresOpen] = useState(false);
   const [isActiveLink, setIsActiveLink] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
+  const categories = useSelector((state) => state.reducer.categories);
+
+  console.log(categories);
 
   const toggleArrow = () => {
     if (arrow === 'arrow-down') {

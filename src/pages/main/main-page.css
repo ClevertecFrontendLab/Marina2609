@@ -68,6 +68,14 @@ article {
   padding: 0;
 }
 
+.error-container {
+  max-width: 1110px;
+  height: 80px;
+  background: #feebea;
+  border: 1.5px solid #f42c4f;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .book-page-container {
     padding: 8px 7px 0;

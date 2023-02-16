@@ -18,7 +18,8 @@ body {
   letter-spacing: 0.1px;
   color: #a7a7a7;
   padding: 0 165px;
-  max-width: 1440px;
+  /* max-width: 1440px; */
+  width: 200vh;
 }
 
 .slash {
