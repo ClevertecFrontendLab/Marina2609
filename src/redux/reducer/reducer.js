@@ -1,11 +1,14 @@
-import { FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from '../actions/actions-types';
+import { ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from '../actions/actions-types';
 
 const initialState = {
-  loading: false,
+  isLoading: false,
+  isLoadCategories: false,
   books: [],
   categories: [],
   book: {},
   error: '',
+  errorCategories: '',
+  isShow: false,
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -17,14 +20,20 @@ export const reducer = (state = initialState, { type, payload }) => {
       };
 
     case GET_BOOKS:
-      return { loading: false, books: payload, error: '' };
+      return { isLoading: false, books: payload, error: '' };
+
     case GET_CATEGORIES:
-      return { loading: false, categories: payload, error: '' };
+      return { isLoadCategories: false, categories: payload, errorCategories: '' };
+
     case GET_BOOK_BY_ID:
-      return { loading: false, book: payload, error: '' };
+      return { isLoading: false, book: payload, error: '' };
 
     case FAILED:
-      return { loading: false, books: [], error: payload };
+      return { isLoading: false, books: [], error: payload };
+
+    case ERROR:
+      return { isShow: payload };
+
     default:
       return state;
   }

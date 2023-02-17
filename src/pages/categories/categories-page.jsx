@@ -20,13 +20,6 @@ export const CategoriesPage = () => {
     } else setState('grid');
   };
 
-  useEffect(() => {
-    const menu = document.getElementById('aside-container');
-
-    menu.style.display = 'block';
-    document.querySelector('.article').parentNode.classList.remove('wrapper-book');
-  });
-
   return (
     <article className='article'>
       <section className='categories-page'>

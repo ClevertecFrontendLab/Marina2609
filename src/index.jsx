@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { AppLayout } from './app/layouts/app-layout';
+import { BookLayout } from './app/layouts/book-layout';
+import { MainLayout } from './app/layouts/main-layout';
 import { BookPage } from './pages/book/book-page';
 import { CategoriesPage } from './pages/categories/categories-page';
 import { DocumentPage } from './pages/document/document-page';
@@ -17,21 +19,26 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
         <Routes>
           <Route path='/' element={<AppLayout />}>
-            <Route index={true} element={<MainPage />} />\
-            <Route path='category/:categories' element={<CategoriesPage />} />
+            <Route element={<MainLayout />} />
+            <Route path='/' element={<MainPage />} />
+            <Route path='books/:category' element={<MainPage />} />
+            <Route path='category/:category' element={<CategoriesPage />} />
             <Route path='rule' element={<RulePage />} />
             <Route path='document' element={<DocumentPage />} />
-            <Route path='book/:id' element={<BookPage />} />
+
             <Route path='account' element={<MainPage />} />
             <Route path='logOut' element={<MainPage />} />
           </Route>
+          <Route path='/book' element={<BookLayout />}>
+            <Route path=':id' element={<BookPage />} />
+          </Route>
           {/* <Route path="*" element={<Error />} /> */}
         </Routes>
-      </BrowserRouter>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

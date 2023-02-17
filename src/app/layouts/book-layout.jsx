@@ -1,16 +1,15 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 import { Footer } from '../components/footer/footer';
 import { Header } from '../components/header/header';
 
-import { MainLayout } from './main-layout';
-
-export const AppLayout = () => (
+export const BookLayout = () => (
   <React.Fragment>
     <Header />
     <main>
-      <div className='wrapper'>
-        <MainLayout />
+      <div className='book-wrapper'>
+        <Outlet />
       </div>
     </main>
     <Footer />
