@@ -24,7 +24,7 @@ root.render(
         <Routes>
           <Route path='/' element={<AppLayout />}>
             <Route element={<MainLayout />} />
-            <Route path='/' element={<MainPage />} />
+            <Route path='books' element={<MainPage />} />
             <Route path='books/:category' element={<MainPage />} />
             <Route path='category/:category' element={<CategoriesPage />} />
             <Route path='rule' element={<RulePage />} />

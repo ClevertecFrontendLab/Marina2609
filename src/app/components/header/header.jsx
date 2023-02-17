@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { obj } from '../../layouts/app-layout';
 import { Aside } from '../aside/aside';
 
 import './header.css';
@@ -31,9 +32,7 @@ export const Header = () => {
             <span className='burger-menu_lines' />
           </button>
           <div className={classNames('burger-menu_nav', { hide: !isMenuOpen })}>
-            <div className='burger-menu-content'>
-              <Aside isBurger={isBurger} />
-            </div>
+            <div className='burger-menu-content'>{/* <Aside obj={obj} isBurger={isBurger} /> */}</div>
             <div className='separation' />
             <div className='burger-menu-content'>
               <NavLink to='/account' className={({ isActive }) => (isActive ? ' active' : 'aside-item')}>

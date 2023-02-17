@@ -6,6 +6,10 @@ export const fetchBooksRequest = () => ({
   type: REQUEST,
 });
 
+export const fetchCategoriesRequest = () => ({
+  type: REQUEST,
+});
+
 export const fetchError = (error) => ({
   type: ERROR,
   payload: error,
@@ -27,6 +31,11 @@ export const fetchBookSuccess = (book) => ({
 });
 
 export const fetchBooksFailure = (error) => ({
+  type: FAILED,
+  payload: error,
+});
+
+export const fetchCategoriesFailure = (error) => ({
   type: FAILED,
   payload: error,
 });
@@ -63,11 +72,18 @@ export const getBook = (id) => async (dispatch) => {
 };
 
 export const getCategories = () => async (dispatch) => {
-  axios.get('https://strapi.cleverland.by/api/categories').then((response) => {
-    const result = response.data;
+  dispatch(fetchCategoriesRequest());
 
-    dispatch(fetchCategoriesSuccess(result));
-  });
+  axios
+    .get('https://strapi.cleverland.by/api/categories')
+    .then((response) => {
+      const result = response.data;
+
+      dispatch(fetchCategoriesSuccess(result));
+    })
+    .catch((error) => {
+      dispatch(fetchCategoriesFailure(error.message));
+    });
 };
 
 export const getError = () => async (dispatch) => {
