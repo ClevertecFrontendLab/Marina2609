@@ -21,7 +21,7 @@ export const Slider = (props) => {
   //   </div>
   // )}
   // props.imgSrc.map((el) => console.log(el));
-
+  console.log(props.book.images);
   return (
     <React.Fragment>
       <Swiper
@@ -40,11 +40,11 @@ export const Slider = (props) => {
           clickable: true,
         }}
       >
-        {props.images.length !== 0 ? (
+        {/* {props.book.images.length !== 0 ? (
           <React.Fragment>
-            {props.images.map((pic) => (
+            {props.book.images.map((pic) => (
               <SwiperSlide>
-                <img className='big-slider__img' src={pic.img} alt='big img' />
+                <img className='big-slider__img' src={`https://strapi.cleverland.by${pic}`} alt='big img' />
               </SwiperSlide>
             ))}
           </React.Fragment>
@@ -54,10 +54,10 @@ export const Slider = (props) => {
               <div className='cat' />
             </div>
           </SwiperSlide>
-        )}
+        )} */}
       </Swiper>
 
-      {props.images.length !== 0 && props.images.length !== 1 ? (
+      {/* {props.images.length !== 0 && props.images.length !== 1 ? (
         <Swiper
           onSwiper={setThumbsSwiper}
           loop={true}
@@ -71,13 +71,13 @@ export const Slider = (props) => {
         >
           {props.images.map((pic) => (
             <SwiperSlide>
-              <img className='mini-slider__img' src={pic.img} alt='mini img' />
+              <img className='mini-slider__img' src={pic} alt='mini img' />
             </SwiperSlide>
           ))}
         </Swiper>
       ) : (
         ''
-      )}
+      )} */}
     </React.Fragment>
   );
 };

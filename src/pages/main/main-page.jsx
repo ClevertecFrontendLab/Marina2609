@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,9 +9,11 @@ import { getBooks, getCategories } from '../../redux/actions/actions';
 
 import './main-page.css';
 
-export const MainPage = () => {
+export const MainPage = (props) => {
   const [mainState, setMainState] = useState('grid');
-
+  const books = useSelector((state) => state.reducer.books);
+  const isLoading = useSelector((state) => state.reducer.isLoading);
+  const error = useSelector((state) => state.reducer.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,16 +21,16 @@ export const MainPage = () => {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const books = useSelector((state) => state.reducer.books);
-  const loading = useSelector((state) => state.reducer.loading);
-  const error = useSelector((state) => state.reducer.error);
-
   const toggle = (e) => {
     e.preventDefault();
 
     if (mainState === 'grid') {
       setMainState('list');
     } else setMainState('grid');
+  };
+
+  const closeError = () => {
+    // dispatch(getError(false));
   };
 
   return (
@@ -74,13 +77,21 @@ export const MainPage = () => {
             </div>
           )}
         </div>
-        {loading && (
+        {error ? (
+          <div className='error-container' data-test-id='error'>
+            <div className='error-content'>
+              <div className='warning' />
+              <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
+              <button type='button' className='close-message' onClick={closeError} />
+            </div>
+          </div>
+        ) : isLoading ? (
           <div className='loader-container' data-test-id='loader'>
             <div className='loader' />
           </div>
+        ) : (
+          books && <Cards books={books} state={mainState} />
         )}
-        {books && <Cards books={books} state={mainState} />}
-        {error && <div className='error' data-test-id='error' />}
       </section>
     </article>
   );

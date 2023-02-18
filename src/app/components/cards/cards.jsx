@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { Rating } from '../rating/rating';
+
 import './cards.css';
 
 export const Cards = (props) => {
@@ -17,7 +19,7 @@ export const Cards = (props) => {
         <React.Fragment>
           {props.books.map((book) => (
             <NavLink
-              to={`/book/${book.id}`}
+              to={`/books/all/${book.id}`}
               key={book.id}
               state={{ props: book }}
               aria-hidden={false}
@@ -40,36 +42,22 @@ export const Cards = (props) => {
                     </div>
                   )}
                   <div className={props.state === 'grid' ? 'grid-description' : 'description'}>
-                    {/* <div className={props.state === 'grid' ? 'grid-rating' : 'list-rating'}>
-                      {book.rating === 0 ? (
+                    <div className={props.state === 'grid' ? 'grid-rating' : 'list-rating'}>
+                      {book.rating === null ? (
                         <div className='not-star'>ещё нет оценок</div>
                       ) : (
-                        <div className='stars'>
-                          <div className='star checked' />
-                          <div className='star checked' />
-                          <div className='star checked' />
-                          <div className='star checked' />
-                          <div className='star unchecked' />
-                        </div>
+                        <Rating rating={book.rating} />
                       )}
-                    </div> */}
+                    </div>
                     <div className={props.state === 'grid' ? 'book-title-container' : ''}>
                       <div className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}>{book.title}</div>
                     </div>
                     <div className={props.state === 'grid' ? 'book-grid-autor' : 'book-list-autor'}>
                       {book.authors}, {book.issueYear}
                     </div>
-
-                    {/* {book.reserve === null ? (
+                    {book.booking === null ? (
                       <button type='button' className={props.state === 'grid' ? 'grid-reserve' : 'list-reserve'}>
                         Забронировать
-                      </button>
-                    ) : book.reserve === 'busy' ? (
-                      <button
-                        type='button'
-                        className={props.state === 'grid' ? 'grid-reserve  grid-busy' : 'list-reserve  list-busy'}
-                      >
-                        Занята до {book.date}
                       </button>
                     ) : (
                       <button
@@ -78,7 +66,15 @@ export const Cards = (props) => {
                       >
                         Забронирована
                       </button>
-                    )} */}
+                    )}
+                    {book.delivery !== null && (
+                      <button
+                        type='button'
+                        className={props.state === 'grid' ? 'grid-reserve grid-booked' : 'list-reserve list-booked'}
+                      >
+                        Занята до {book.delivery.dateHandedTo}
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -9,9 +10,7 @@ export const Aside = (props) => {
   const [arrow, setArrow] = useState('arrow-up');
   const [isGenresOpen, setIsGenresOpen] = useState(false);
   const [isActiveLink, setIsActiveLink] = useState(true);
-  const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
-  const categories = useSelector((state) => state.reducer.categories);
-  const errorCategories = useSelector((state) => state.reducer.errorCategories);
+  const books = useSelector((state) => state.reducer.books);
 
   const toggleArrow = () => {
     if (arrow === 'arrow-down') {
@@ -23,7 +22,11 @@ export const Aside = (props) => {
     setIsGenresOpen(!isGenresOpen);
   };
 
-  console.log(categories);
+  const closeError = () => {
+    // dispatch(getError(false));
+  };
+
+  // console.log(props.categories);
 
   return (
     <aside data-test-id='burger-navigation'>
@@ -54,21 +57,35 @@ export const Aside = (props) => {
                 Все книги
               </NavLink>
             </li>
-
-            {categories.map((categorie) => (
-              <li className='aside-item'>
-                <NavLink
-                  aria-hidden={false}
-                  to={`/category/${categorie.path}`}
-                  // state={{
-                  //   props: data.filter((e) => e.category.includes('Бизнес-книги')),
-                  // }}
-                  // onClick={toggleArrow}
-                >
-                  {categorie.name} <span className='count'>{categorie.id} </span>
-                </NavLink>
-              </li>
-            ))}
+            {props.errorCategories ? (
+              <div className='error-container' data-test-id='error'>
+                <div className='error-content'>
+                  <div className='warning' />
+                  <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
+                  <button type='button' className='close-message' onClick={closeError} />
+                </div>
+              </div>
+            ) : props.isLoadCategories ? (
+              <div className='loader-container' data-test-id='loader'>
+                <div className='loader' />
+              </div>
+            ) : (
+              props.categories.map((categorie) => (
+                <li className='aside-item'>
+                  <NavLink
+                    aria-hidden={false}
+                    to={`books/${categorie.path}`}
+                    state={{
+                      props: books,
+                      // props: books.filter((e) => e.categories.includes(`${categorie.name}`)),
+                    }}
+                    onClick={toggleArrow}
+                  >
+                    {categorie.name} <span className='count'>{categorie.id} </span>
+                  </NavLink>
+                </li>
+              ))
+            )}
           </ul>
         </ul>
 

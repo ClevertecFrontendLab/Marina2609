@@ -159,6 +159,10 @@ body {
   width: 350px;
 }
 
+.rating-title {
+  margin-bottom: 20px;
+}
+
 .not-review {
   font-weight: 700;
   font-size: 18px;
@@ -179,7 +183,7 @@ body {
 
 .rating-stars {
   display: flex;
-  gap: 16px;
+  gap: 26px;
   padding: 19px 0 0 2px;
   font-weight: 700;
   font-size: 18px;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 
+import { Rating } from '../../app/components/rating/rating';
 import { Slider } from '../../app/components/slider/slider';
 import { getBook } from '../../redux/actions/actions';
 
@@ -41,10 +42,8 @@ export const BookPage = () => {
   }, [dispatch, id]);
 
   const book = useSelector((state) => state.reducer.book);
-  const loading = useSelector((state) => state.reducer.loading);
+  const isLoading = useSelector((state) => state.reducer.isLoading);
   const error = useSelector((state) => state.reducer.error);
-
-  console.log(book);
 
   const toggleReviewMode = () => {
     if (arrow === 'up') {
@@ -55,9 +54,11 @@ export const BookPage = () => {
     toggleReview(!isReviewOpen);
   };
 
+  console.log(book);
+
   return (
     <section className='book-page'>
-      {loading && (
+      {isLoading && (
         <div className='loader-container' data-test-id='loader'>
           <div className='loader' />
         </div>
@@ -73,24 +74,27 @@ export const BookPage = () => {
           </div>
           <div className='book-container'>
             <div className=' book-content'>
-              <div className='row-span-3 book-slider'>{/* <Slider images={data.imgSrc} /> */}</div>
+              <div className='row-span-3 book-slider'>
+                <Slider book={book} />
+              </div>
 
               <div className='col-span-2 book-description'>
                 <div className='title'>{book.title}</div>
                 <div className='autor'>
                   {book.authors}, {book.issueYear}
                 </div>
-                {props.reserve === null ? (
+                {book.booking === null ? (
                   <button type='button' className='reserve'>
                     Забронировать
-                  </button>
-                ) : props.reserve === 'busy' ? (
-                  <button type='button' className=' reserve busy'>
-                    Занята до {props.date}
                   </button>
                 ) : (
                   <button type='button' className='reserve booked'>
                     Забронирована
+                  </button>
+                )}
+                {book.delivery !== null && (
+                  <button type='button' className=' reserve busy'>
+                    {/* Занята до {book.delivery.dateHandedTo} */}
                   </button>
                 )}
               </div>
@@ -103,23 +107,13 @@ export const BookPage = () => {
             </div>
             <div className='rating'>
               <div className='rating-title'>Рейтинг</div>
-              {props.rating === 0 ? (
-                <div className='no-star'>
-                  <div className='star unchecked' />
-                  <div className='star unchecked' />
-                  <div className='star unchecked' />
-                  <div className='star unchecked' />
-                  <div className='star unchecked' />
-                  <div className='rating-count'>ещё нет оценок</div>
-                </div>
+
+              {book.rating === null ? (
+                <div className='not-star'>ещё нет оценок</div>
               ) : (
                 <div className='rating-stars'>
-                  <div className='star checked' />
-                  <div className='star checked' />
-                  <div className='star checked' />
-                  <div className='star checked' />
-                  <div className='star unchecked' />
-                  <div className='rating-count'>4.3</div>
+                  <Rating rating={book.rating} />
+                  <div className='rating-count'>{book.rating}</div>
                 </div>
               )}
             </div>
@@ -167,7 +161,7 @@ export const BookPage = () => {
               <div aria-hidden={true} data-test-id='button-rating' className={`arrow ${arrow}`} />
             </div>
             <div data-test-id='button-hide-reviews' className='review-container'>
-              {isReviewOpen ? (
+              {isReviewOpen && (
                 <React.Fragment>
                   {reviews.map((review) => (
                     <div className='review-content'>
@@ -191,8 +185,6 @@ export const BookPage = () => {
                     </div>
                   ))}
                 </React.Fragment>
-              ) : (
-                ''
               )}
             </div>
 
