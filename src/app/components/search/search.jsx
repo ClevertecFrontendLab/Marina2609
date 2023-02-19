@@ -16,11 +16,7 @@ export const Search = () => {
   };
 
   return (
-    <div
-      // className='search-container'
-
-      className={classNames('search-container', { 'hide-search': isVisible })}
-    >
+    <div className={classNames('search-container', { 'hide-search': isVisible })}>
       {isVisible ? (
         ''
       ) : (
@@ -30,9 +26,7 @@ export const Search = () => {
       <input
         data-test-id='input-search'
         type='text'
-        // className='search'
         className={isVisible ? 'visible-search' : 'search'}
-        // className={classNames('search', { 'hide-search': isVisible })}
         placeholder='Поиск книги или автора…'
       />
       <div

@@ -11,17 +11,9 @@ import 'swiper/css/thumbs';
 import 'swiper/css/pagination';
 
 export const Slider = (props) => {
+  const [data] = useState(props);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  // {props.imgSrc ? (
-  //   <img src={props.imgSrc} alt='book_image' className='book-image' />
-  // ) : (
-  //   <div className='cover-container'>
-  //     <div className='cat' />
-  //   </div>
-  // )}
-  // props.imgSrc.map((el) => console.log(el));
-  console.log(props.book.images);
   return (
     <React.Fragment>
       <Swiper
@@ -40,11 +32,11 @@ export const Slider = (props) => {
           clickable: true,
         }}
       >
-        {/* {props.book.images.length !== 0 ? (
+        {data.book.images ? (
           <React.Fragment>
-            {props.book.images.map((pic) => (
+            {data.book.images.map((pic) => (
               <SwiperSlide>
-                <img className='big-slider__img' src={`https://strapi.cleverland.by${pic}`} alt='big img' />
+                <img className='big-slider__img' src={`https://strapi.cleverland.by${pic.url}`} alt='big img' />
               </SwiperSlide>
             ))}
           </React.Fragment>
@@ -54,10 +46,10 @@ export const Slider = (props) => {
               <div className='cat' />
             </div>
           </SwiperSlide>
-        )} */}
+        )}
       </Swiper>
 
-      {/* {props.images.length !== 0 && props.images.length !== 1 ? (
+      {data.book.images ? (
         <Swiper
           onSwiper={setThumbsSwiper}
           loop={true}
@@ -69,17 +61,15 @@ export const Slider = (props) => {
           className='mySwiper'
           data-test-id='slide-mini'
         >
-          {props.images.map((pic) => (
+          {data.book.images.map((pic) => (
             <SwiperSlide>
-              <img className='mini-slider__img' src={pic} alt='mini img' />
+              <img className='mini-slider__img' src={`https://strapi.cleverland.by${pic.url}`} alt='mini img' />
             </SwiperSlide>
           ))}
         </Swiper>
       ) : (
         ''
-      )} */}
+      )}
     </React.Fragment>
   );
 };
-
-// <img className='mini-slider__img' src='../../assets/img/cat.png' alt='mini img' />

@@ -9,7 +9,7 @@ import './header.css';
 export const Header = () => {
   const userName = 'Иван';
   const [isMenuOpen, toggleMenu] = useState(false);
-  const [isBurger, setIsBurger] = useState(true);
+  const [isBurger] = useState(true);
 
   const toggleMenuMode = () => {
     toggleMenu(!isMenuOpen);
@@ -31,7 +31,9 @@ export const Header = () => {
             <span className='burger-menu_lines' />
           </button>
           <div className={classNames('burger-menu_nav', { hide: !isMenuOpen })}>
-            <div className='burger-menu-content'>{/* <Aside obj={obj} isBurger={isBurger} /> */}</div>
+            <div className='burger-menu-content'>
+              <Aside isBurger={isBurger} />
+            </div>
             <div className='separation' />
             <div className='burger-menu-content'>
               <NavLink to='/account' className={({ isActive }) => (isActive ? ' active' : 'aside-item')}>

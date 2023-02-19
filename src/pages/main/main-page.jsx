@@ -39,53 +39,12 @@ export const MainPage = () => {
   };
 
   const closeError = () => {
-    // dispatch(getError(false));
+    dispatch(getError(false));
   };
 
   return (
     <article className='article'>
       <section className='main-page'>
-        <div className='menu'>
-          <div className='menu-container'>
-            <Search />
-            <Filter />
-          </div>
-          {mainState === 'grid' ? (
-            <div className='main-btns'>
-              <button
-                type='button'
-                className='btn-grid btn-grid-active'
-                onClick={toggle}
-                aria-label='grid'
-                data-test-id='button-menu-view-window'
-              />
-              <button
-                type='button'
-                className='btn-list'
-                onClick={toggle}
-                aria-label='list'
-                data-test-id='button-menu-view-list'
-              />
-            </div>
-          ) : (
-            <div className='main-btns'>
-              <button
-                type='button'
-                className='btn-grid'
-                onClick={toggle}
-                aria-label='grid'
-                data-test-id='button-menu-view-window'
-              />
-              <button
-                type='button'
-                className='btn-list btn-list-active'
-                onClick={toggle}
-                aria-label='list'
-                data-test-id='button-menu-view-list'
-              />
-            </div>
-          )}
-        </div>
         {isLoadCategories && isLoading ? (
           <div className='loader-container' data-test-id='loader'>
             <div className='loader' />
@@ -99,7 +58,52 @@ export const MainPage = () => {
             </div>
           </div>
         ) : (
-          books && <Cards books={books} state={mainState} />
+          books && (
+            <React.Fragment>
+              <div className='menu'>
+                <div className='menu-container'>
+                  <Search />
+                  <Filter />
+                </div>
+                {mainState === 'grid' ? (
+                  <div className='main-btns'>
+                    <button
+                      type='button'
+                      className='btn-grid btn-grid-active'
+                      onClick={toggle}
+                      aria-label='grid'
+                      data-test-id='button-menu-view-window'
+                    />
+                    <button
+                      type='button'
+                      className='btn-list'
+                      onClick={toggle}
+                      aria-label='list'
+                      data-test-id='button-menu-view-list'
+                    />
+                  </div>
+                ) : (
+                  <div className='main-btns'>
+                    <button
+                      type='button'
+                      className='btn-grid'
+                      onClick={toggle}
+                      aria-label='grid'
+                      data-test-id='button-menu-view-window'
+                    />
+                    <button
+                      type='button'
+                      className='btn-list btn-list-active'
+                      onClick={toggle}
+                      aria-label='list'
+                      data-test-id='button-menu-view-list'
+                    />
+                  </div>
+                )}
+              </div>
+              <Cards books={books} state={mainState} />
+            </React.Fragment>
+          )
         )}
       </section>
     </article>

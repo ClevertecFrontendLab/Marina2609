@@ -91,6 +91,7 @@ body {
 
 main {
   background-color: #fff;
+  flex: 1 0 auto;
 }
 
 .wrapper {
@@ -102,10 +103,6 @@ main {
 
 .wrapper {
   padding: 0 165px;
-}
-
-.wrapper-book {
-  padding: 0;
 }
 
 .not-visible {
@@ -120,10 +117,6 @@ main {
   .wrapper {
     padding: 0 105px;
     display: block;
-  }
-
-  .wrapper-book {
-    padding: 0;
   }
 
   .article {
@@ -161,18 +154,10 @@ main {
   .wrapper {
     padding: 0 65px;
   }
-
-  .wrapper-book {
-    padding: 0;
-  }
 }
 
 @media screen and (max-width: 350px) {
   .wrapper {
     padding: 0 16px;
-  }
-
-  .wrapper-book {
-    padding: 0;
   }
 }

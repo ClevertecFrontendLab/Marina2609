@@ -9,8 +9,8 @@ import './aside.css';
 export const Aside = (props) => {
   const [arrow, setArrow] = useState('arrow-up');
   const [isGenresOpen, setIsGenresOpen] = useState(false);
-  const [isActiveLink, setIsActiveLink] = useState(true);
   const categories = useSelector((state) => state.reducer.categories);
+  const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const books = useSelector((state) => state.reducer.books);
 
   const toggleArrow = () => {
@@ -22,12 +22,6 @@ export const Aside = (props) => {
 
     setIsGenresOpen(!isGenresOpen);
   };
-
-  const closeError = () => {
-    // dispatch(getError(false));
-  };
-
-  // console.log(props.categories);
 
   return (
     <aside data-test-id='burger-navigation'>
@@ -43,51 +37,41 @@ export const Aside = (props) => {
             <div className={`arrow ${arrow}`} />
           </div>
         </h2>
-
         <ul className={classNames('aside-list-books', { none: isGenresOpen })}>
           <ul>
-            <li className=' all-books aside-item'>
-              <NavLink
-                data-test-id={props.isBurger ? 'burger-books' : 'navigation-books'}
-                to='/books/all'
-                className={classNames('aside-item', { 'all-books': isGenresOpen })}
-                // className={isGenresOpen ? 'navItem' : 'navItemActive'}
-                aria-hidden={false}
-                // onClick={toggleArrow}
-              >
-                Все книги
-              </NavLink>
-            </li>
-            {
-              // props.errorCategories ? (
-              //   <div className='error-container' data-test-id='error'>
-              //     <div className='error-content'>
-              //       <div className='warning' />
-              //       <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
-              //       <button type='button' className='close-message' onClick={closeError} />
-              //     </div>
-              //   </div>
-              // ) : props.isLoadCategories ? (
-              //   <div className='loader-container' data-test-id='loader'>
-              //     <div className='loader' />
-              //   </div>
-              // ) : (
-              categories.map((categorie) => (
-                <li className='aside-item' key={categorie.id}>
+            {isLoadCategories ? (
+              ''
+            ) : categories ? (
+              <React.Fragment>
+                <li className=' all-books aside-item'>
                   <NavLink
+                    data-test-id={props.isBurger ? 'burger-books' : 'navigation-books'}
+                    to='/books/all'
+                    className={classNames('aside-item', { 'all-books': isGenresOpen })}
                     aria-hidden={false}
-                    to={`books/${categorie.path}`}
-                    state={{
-                      props: books,
-                      // props: books.filter((e) => e.categories.includes(`${categorie.name}`)),
-                    }}
-                    onClick={toggleArrow}
                   >
-                    {categorie.name} <span className='count'>{categorie.id} </span>
+                    Все книги
                   </NavLink>
                 </li>
-              ))
-            }
+
+                {categories.map((categorie) => (
+                  <li className='aside-item' key={categorie.id}>
+                    <NavLink
+                      aria-hidden={false}
+                      to={`books/${categorie.path}`}
+                      state={{
+                        props: books,
+                      }}
+                      onClick={toggleArrow}
+                    >
+                      {categorie.name} <span className='count'>{categorie.id} </span>
+                    </NavLink>
+                  </li>
+                ))}
+              </React.Fragment>
+            ) : (
+              ''
+            )}
           </ul>
         </ul>
 
@@ -98,7 +82,6 @@ export const Aside = (props) => {
               to='/rule'
               className={({ isActive }) => (isActive ? ' link-active' : '')}
               onClick={() => {
-                setIsActiveLink(false);
                 toggleArrow();
               }}
             >
@@ -113,7 +96,6 @@ export const Aside = (props) => {
               to='/document'
               className={({ isActive }) => (isActive ? ' link-active' : '')}
               onClick={() => {
-                setIsActiveLink(false);
                 toggleArrow();
               }}
             >

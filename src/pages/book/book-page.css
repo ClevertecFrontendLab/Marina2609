@@ -286,6 +286,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+.autor-avatar {
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 .review-stars {
   display: flex;
