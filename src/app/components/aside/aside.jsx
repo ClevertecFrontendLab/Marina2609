@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -39,9 +38,7 @@ export const Aside = (props) => {
         </h2>
         <ul className={classNames('aside-list-books', { none: isGenresOpen })}>
           <ul>
-            {isLoadCategories ? (
-              ''
-            ) : categories ? (
+            {!isLoadCategories && categories && (
               <React.Fragment>
                 <li className=' all-books aside-item'>
                   <NavLink
@@ -69,8 +66,6 @@ export const Aside = (props) => {
                   </li>
                 ))}
               </React.Fragment>
-            ) : (
-              ''
             )}
           </ul>
         </ul>

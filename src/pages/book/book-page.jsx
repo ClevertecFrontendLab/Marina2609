@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 
 import { Rating } from '../../app/components/rating/rating';
 import { Slider } from '../../app/components/slider/slider';
@@ -17,6 +16,20 @@ export const BookPage = () => {
   const isLoading = useSelector((state) => state.reducer.isLoading);
   const error = useSelector((state) => state.reducer.error);
   const dispatch = useDispatch();
+  const location = useLocation();
+  let currentLink = '';
+  const crumbs = location.pathname
+    .split('/')
+    .filter((cramb) => cramb !== '')
+    .map((cramb) => {
+      currentLink += `/${cramb}`;
+
+      return (
+        <div className='cramb' key={cramb}>
+          <NavLink to={currentLink}>Бизнес</NavLink>
+        </div>
+      );
+    });
 
   const toggleReviewMode = () => {
     if (arrow === 'up') {
@@ -39,9 +52,9 @@ export const BookPage = () => {
     <section className='book-page'>
       <div className='navigation-menu'>
         <div className='book-title'>
-          {book.categories}
-          <div className='slash' />
-          {book.title}
+          {crumbs[1]}
+          <div />
+          <div className='crambs'> {book.title}</div>
         </div>
       </div>
       {isLoading ? (
@@ -53,7 +66,7 @@ export const BookPage = () => {
           <div className='error-content'>
             <div className='warning' />
             <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
-            <button type='button' className='close-message' onClick={closeError} />
+            <button type='button' className='close-message' aria-label='button' onClick={closeError} />
           </div>
         </div>
       ) : (
@@ -150,7 +163,7 @@ export const BookPage = () => {
             <div data-test-id='button-hide-reviews' className='review-container'>
               {isReviewOpen && (
                 <div>
-                  {book.comments ? (
+                  {book.comments && (
                     <div>
                       {book.comments.map((comment) => (
                         <div className='review-content'>
@@ -170,8 +183,6 @@ export const BookPage = () => {
                         </div>
                       ))}
                     </div>
-                  ) : (
-                    ''
                   )}
                 </div>
               )}

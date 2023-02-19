@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import './search.css';
@@ -17,9 +16,7 @@ export const Search = () => {
 
   return (
     <div className={classNames('search-container', { 'hide-search': isVisible })}>
-      {isVisible ? (
-        ''
-      ) : (
+      {!isVisible && (
         <div className='search-icon' aria-hidden={true} data-test-id='button-search-open' onClick={toggleSearchOpen} />
       )}
 

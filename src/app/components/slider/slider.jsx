@@ -49,7 +49,7 @@ export const Slider = (props) => {
         )}
       </Swiper>
 
-      {data.book.images ? (
+      {data.book.images && (
         <Swiper
           onSwiper={setThumbsSwiper}
           loop={true}
@@ -67,8 +67,6 @@ export const Slider = (props) => {
             </SwiperSlide>
           ))}
         </Swiper>
-      ) : (
-        ''
       )}
     </React.Fragment>
   );
