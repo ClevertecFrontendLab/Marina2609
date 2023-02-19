@@ -85,6 +85,6 @@ export const getCategories = () => async (dispatch) => {
     });
 };
 
-export const getError = () => async (dispatch) => {
-  dispatch(fetchError());
+export const getError = (error) => async (dispatch) => {
+  dispatch(fetchError(error.message));
 };

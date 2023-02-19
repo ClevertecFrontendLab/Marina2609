@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Cards } from '../../app/components/cards/cards';
 import { Filter } from '../../app/components/filter/filter';
 import { Search } from '../../app/components/search/search';
-import { getBooks, getCategories } from '../../redux/actions/actions';
+import { getBooks, getCategories, getError } from '../../redux/actions/actions';
 
 import './main-page.css';
 
@@ -16,12 +16,19 @@ export const MainPage = () => {
   const error = useSelector((state) => state.reducer.error);
   const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const errorCategories = useSelector((state) => state.reducer.errorCategories);
+  const isShow = useSelector((state) => state.reducer.isShow);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getBooks());
     dispatch(getCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (error || errorCategories) {
+      dispatch(getError(true));
+    }
+  }, [dispatch, error, errorCategories]);
 
   const toggle = (e) => {
     e.preventDefault();
@@ -79,11 +86,11 @@ export const MainPage = () => {
             </div>
           )}
         </div>
-        {isLoading || isLoadCategories ? (
+        {isLoadCategories && isLoading ? (
           <div className='loader-container' data-test-id='loader'>
             <div className='loader' />
           </div>
-        ) : error || errorCategories ? (
+        ) : isShow ? (
           <div className='error-container' data-test-id='error'>
             <div className='error-content'>
               <div className='warning' />

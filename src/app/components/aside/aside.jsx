@@ -10,6 +10,7 @@ export const Aside = (props) => {
   const [arrow, setArrow] = useState('arrow-up');
   const [isGenresOpen, setIsGenresOpen] = useState(false);
   const [isActiveLink, setIsActiveLink] = useState(true);
+  const categories = useSelector((state) => state.reducer.categories);
   const books = useSelector((state) => state.reducer.books);
 
   const toggleArrow = () => {
@@ -71,7 +72,7 @@ export const Aside = (props) => {
               //     <div className='loader' />
               //   </div>
               // ) : (
-              props.categories.map((categorie) => (
+              categories.map((categorie) => (
                 <li className='aside-item' key={categorie.id}>
                   <NavLink
                     aria-hidden={false}

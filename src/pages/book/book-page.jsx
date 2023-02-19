@@ -10,9 +10,7 @@ import { getBook } from '../../redux/actions/actions';
 import './book-page.css';
 
 export const BookPage = () => {
-  const location = useLocation();
-  const { props } = location.state;
-  const [category] = useState(props.categories);
+  // const [category] = useState(props.categories);
   const [arrow, setArrow] = useState('down');
   const [isReviewOpen, toggleReview] = useState(true);
   const { id } = useParams();
@@ -59,7 +57,7 @@ export const BookPage = () => {
           <React.Fragment>
             <div className='navigation-menu'>
               <div className='book-title'>
-                {category}
+                {/* {category} */}
                 <div className='slash' />
                 {book.title}
               </div>
