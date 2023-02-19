@@ -79,17 +79,17 @@ export const MainPage = () => {
             </div>
           )}
         </div>
-        {error && errorCategories ? (
+        {isLoading || isLoadCategories ? (
+          <div className='loader-container' data-test-id='loader'>
+            <div className='loader' />
+          </div>
+        ) : error || errorCategories ? (
           <div className='error-container' data-test-id='error'>
             <div className='error-content'>
               <div className='warning' />
               <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
               <button type='button' className='close-message' onClick={closeError} />
             </div>
-          </div>
-        ) : isLoading && isLoadCategories ? (
-          <div className='loader-container' data-test-id='loader'>
-            <div className='loader' />
           </div>
         ) : (
           books && <Cards books={books} state={mainState} />
