@@ -56,11 +56,10 @@ export const getBooks = () => (dispatch) => {
 };
 
 export const getBook = (id) => async (dispatch) => {
-  // dispatch(getBooks(id));
   dispatch(fetchBooksRequest());
 
   axios
-    .get(`https://strapi.cleverland.by/api/book66s/${id}`)
+    .get(`https://strapi.cleverland.by/api/books/${id}`)
     .then((response) => {
       const result = response.data;
 
