@@ -21,13 +21,13 @@ export const reducer = (state = initialState, { type, payload }) => {
       };
 
     case GET_BOOKS:
-      return { ...state, isLoading: false, books: payload, error: 'Error' };
+      return { ...state, isLoading: false, books: payload, error: '' };
 
     case GET_CATEGORIES:
-      return { ...state, isLoadCategories: false, categories: payload, errorCategories: 'Error' };
+      return { ...state, isLoadCategories: false, categories: payload, errorCategories: '' };
 
     case GET_BOOK_BY_ID:
-      return { ...state, isLoading: false, book: payload, error: 'Error' };
+      return { ...state, isLoading: false, book: payload, error: '' };
 
     case FAILED:
       return { ...state, isLoading: false, books: [], error: payload };
