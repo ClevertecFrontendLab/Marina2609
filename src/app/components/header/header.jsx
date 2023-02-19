@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { obj } from '../../layouts/app-layout';
 import { Aside } from '../aside/aside';
 
 import './header.css';
