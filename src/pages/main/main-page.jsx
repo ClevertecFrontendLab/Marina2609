@@ -9,11 +9,13 @@ import { getBooks, getCategories } from '../../redux/actions/actions';
 
 import './main-page.css';
 
-export const MainPage = (props) => {
+export const MainPage = () => {
   const [mainState, setMainState] = useState('grid');
   const books = useSelector((state) => state.reducer.books);
   const isLoading = useSelector((state) => state.reducer.isLoading);
   const error = useSelector((state) => state.reducer.error);
+  const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
+  const errorCategories = useSelector((state) => state.reducer.errorCategories);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -77,7 +79,7 @@ export const MainPage = (props) => {
             </div>
           )}
         </div>
-        {error ? (
+        {error && errorCategories ? (
           <div className='error-container' data-test-id='error'>
             <div className='error-content'>
               <div className='warning' />
@@ -85,7 +87,7 @@ export const MainPage = (props) => {
               <button type='button' className='close-message' onClick={closeError} />
             </div>
           </div>
-        ) : isLoading ? (
+        ) : isLoading && isLoadCategories ? (
           <div className='loader-container' data-test-id='loader'>
             <div className='loader' />
           </div>

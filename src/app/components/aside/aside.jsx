@@ -57,21 +57,22 @@ export const Aside = (props) => {
                 Все книги
               </NavLink>
             </li>
-            {props.errorCategories ? (
-              <div className='error-container' data-test-id='error'>
-                <div className='error-content'>
-                  <div className='warning' />
-                  <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
-                  <button type='button' className='close-message' onClick={closeError} />
-                </div>
-              </div>
-            ) : props.isLoadCategories ? (
-              <div className='loader-container' data-test-id='loader'>
-                <div className='loader' />
-              </div>
-            ) : (
+            {
+              // props.errorCategories ? (
+              //   <div className='error-container' data-test-id='error'>
+              //     <div className='error-content'>
+              //       <div className='warning' />
+              //       <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
+              //       <button type='button' className='close-message' onClick={closeError} />
+              //     </div>
+              //   </div>
+              // ) : props.isLoadCategories ? (
+              //   <div className='loader-container' data-test-id='loader'>
+              //     <div className='loader' />
+              //   </div>
+              // ) : (
               props.categories.map((categorie) => (
-                <li className='aside-item'>
+                <li className='aside-item' key={categorie.id}>
                   <NavLink
                     aria-hidden={false}
                     to={`books/${categorie.path}`}
@@ -85,7 +86,7 @@ export const Aside = (props) => {
                   </NavLink>
                 </li>
               ))
-            )}
+            }
           </ul>
         </ul>
 
