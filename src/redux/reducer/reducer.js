@@ -1,4 +1,4 @@
-import { ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from '../actions/actions-types';
+import { CATEGORIE, ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from '../actions/actions-types';
 
 const initialState = {
   isLoading: false,
@@ -6,6 +6,7 @@ const initialState = {
   books: [],
   categories: [],
   book: {},
+  categorie: '',
   error: '',
   errorCategories: '',
   isShow: false,
@@ -34,6 +35,9 @@ export const reducer = (state = initialState, { type, payload }) => {
 
     case ERROR:
       return { ...state, isShow: true };
+
+    case CATEGORIE:
+      return { ...state, categorie: payload };
 
     default:
       return state;

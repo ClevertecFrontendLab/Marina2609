@@ -4,7 +4,7 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 
 import { Rating } from '../../app/components/rating/rating';
 import { Slider } from '../../app/components/slider/slider';
-import { getBook } from '../../redux/actions/actions';
+import { getBook, getCategorie } from '../../redux/actions/actions';
 
 import './book-page.css';
 
@@ -15,9 +15,18 @@ export const BookPage = () => {
   const book = useSelector((state) => state.reducer.book);
   const isLoading = useSelector((state) => state.reducer.isLoading);
   const error = useSelector((state) => state.reducer.error);
+  const categorie = useSelector((state) => state.reducer.categorie);
+  const categories = useSelector((state) => state.reducer.categories);
   const dispatch = useDispatch();
   const location = useLocation();
   let currentLink = '';
+  const valueCategorie = categories.filter((e) => e.name.includes(categorie));
+  const [categorieValue, setCategorieValue] = useState('');
+
+  useEffect(() => {
+    valueCategorie.map((elem) => setCategorieValue(elem.path));
+  }, [valueCategorie]);
+
   const crumbs = location.pathname
     .split('/')
     .filter((cramb) => cramb !== '')
@@ -26,7 +35,7 @@ export const BookPage = () => {
 
       return (
         <div className='cramb' key={cramb}>
-          <NavLink to={currentLink}>Бизнес</NavLink>
+          <NavLink to={currentLink}>{categorie}</NavLink>
         </div>
       );
     });

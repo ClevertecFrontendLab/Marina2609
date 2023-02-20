@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from './actions-types';
+import { CATEGORIE, ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from './actions-types';
 
 export const fetchBooksRequest = () => ({
   type: REQUEST,
@@ -13,6 +13,11 @@ export const fetchCategoriesRequest = () => ({
 export const fetchError = (error) => ({
   type: ERROR,
   payload: error,
+});
+
+export const fetchCategorie = (categorie) => ({
+  type: CATEGORIE,
+  payload: categorie,
 });
 
 export const fetchBooksSuccess = (books) => ({
@@ -87,4 +92,8 @@ export const getCategories = () => async (dispatch) => {
 
 export const getError = (error) => async (dispatch) => {
   dispatch(fetchError(error.message));
+};
+
+export const getCategorie = (categorie) => async (dispatch) => {
+  dispatch(fetchCategorie(categorie));
 };
