@@ -54,6 +54,7 @@ export const Aside = (props) => {
                 {categories.map((categorie) => (
                   <li className='aside-item' key={categorie.id}>
                     <NavLink
+                      className='category-link'
                       aria-hidden={false}
                       to={`books/${categorie.path}`}
                       state={{
@@ -61,7 +62,20 @@ export const Aside = (props) => {
                       }}
                       onClick={toggleArrow}
                     >
-                      {categorie.name} <span className='count'>{categorie.id} </span>
+                      <div data-test-id={props.isBurger ? `burger-${categorie.path}` : `navigation-${categorie.path}`}>
+                        {categorie.name}
+                      </div>
+
+                      <span
+                        className='count'
+                        data-test-id={
+                          props.isBurger
+                            ? `burger-book-count-for-${categorie.path}`
+                            : `navigation-book-count-for-${categorie.path}`
+                        }
+                      >
+                        {categorie.id}
+                      </span>
                     </NavLink>
                   </li>
                 ))}
@@ -76,9 +90,7 @@ export const Aside = (props) => {
               data-test-id={props.isBurger ? 'burger-terms' : 'navigation-terms'}
               to='/rule'
               className={({ isActive }) => (isActive ? ' link-active' : '')}
-              onClick={() => {
-                toggleArrow();
-              }}
+              onClick={toggleArrow}
             >
               Правила пользования
             </NavLink>
@@ -90,9 +102,7 @@ export const Aside = (props) => {
               data-test-id={props.isBurger ? 'burger-contract' : 'navigation-contract'}
               to='/document'
               className={({ isActive }) => (isActive ? ' link-active' : '')}
-              onClick={() => {
-                toggleArrow();
-              }}
+              onClick={toggleArrow}
             >
               Договор оферты
             </NavLink>

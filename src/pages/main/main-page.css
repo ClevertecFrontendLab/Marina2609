@@ -4,7 +4,6 @@ article {
 
 .main-wrapper {
   display: flex;
-  gap: 30px;
 }
 
 .aside-container {

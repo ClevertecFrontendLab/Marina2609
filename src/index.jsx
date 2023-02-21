@@ -29,7 +29,7 @@ root.render(
           <Route path='logOut' element={<MainPage />} />
         </Route>
         <Route path='/books' element={<BookLayout />}>
-          <Route path='all/:id' element={<BookPage />} />
+          <Route path=':category/:id' element={<BookPage />} />
         </Route>
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>

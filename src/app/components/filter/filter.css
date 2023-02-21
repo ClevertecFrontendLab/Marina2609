@@ -29,6 +29,7 @@
   color: #a7a7a7;
   width: 94px;
   border: 0;
+  outline: none;
 }
 
 @media screen and (max-width: 760px) {
