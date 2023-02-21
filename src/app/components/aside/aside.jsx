@@ -28,7 +28,7 @@ export const Aside = (props) => {
         <h2>
           <div
             aria-hidden={true}
-            className={classNames('genres  link-active', { '': !isGenresOpen })}
+            className={classNames('genres link-active', { '': !isGenresOpen })}
             onClick={toggleArrow}
             data-test-id={props.isBurger ? 'burger-showcase' : 'navigation-showcase'}
           >
@@ -60,7 +60,7 @@ export const Aside = (props) => {
                       state={{
                         props: books,
                       }}
-                      onClick={toggleArrow}
+                      // onClick={toggleArrow}
                     >
                       <div data-test-id={props.isBurger ? `burger-${categorie.path}` : `navigation-${categorie.path}`}>
                         {categorie.name}
