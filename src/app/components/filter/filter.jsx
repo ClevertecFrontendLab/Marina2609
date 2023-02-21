@@ -45,7 +45,7 @@ export const Filter = (props) => {
   }, [dispatch, sortedList]);
 
   return (
-    <div className='filter-container' aria-hidden={true} onClick={toggleSort}>
+    <div className='filter-container' aria-hidden={true}>
       <div className='filter-icon' />
       <input
         type='filter'
