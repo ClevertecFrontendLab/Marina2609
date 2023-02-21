@@ -15,10 +15,6 @@ export const Cards = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(search.length);
-    console.log(filter);
-    console.log(props.books.length);
-
     if (filter) {
       setIsVisibleMessage(false);
       setIsMessage(true);
@@ -30,8 +26,6 @@ export const Cards = (props) => {
       setIsMessage(false);
     }
   }, [filter, props.books, search]);
-
-  // console.log(props.books);
 
   return (
     <div className={props.state === 'grid' ? 'books-grid' : 'books-list'}>
