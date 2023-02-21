@@ -12,6 +12,7 @@ import './main-page.css';
 
 export const MainPage = () => {
   const [mainState, setMainState] = useState('grid');
+
   const books = useSelector((state) => state.reducer.books);
   const categories = useSelector((state) => state.reducer.categories);
   const isLoading = useSelector((state) => state.reducer.isLoading);
@@ -22,8 +23,25 @@ export const MainPage = () => {
   const search = useSelector((state) => state.reducer.search);
   const sort = useSelector((state) => state.reducer.sort);
   const [filteredList, setFilteredList] = useState(books);
+  const [data, setData] = useState(books);
+
   const { category } = useParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setData(
+      books.sort((a, b) => {
+        if (a.rating < b.rating) {
+          return 1;
+        }
+        if (a.rating > b.rating) {
+          return -1;
+        }
+
+        return 0;
+      })
+    );
+  }, [books]);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -38,11 +56,11 @@ export const MainPage = () => {
 
   useEffect(() => {
     if (category === 'all') {
-      setFilteredList(books);
+      setFilteredList(data);
     } else {
       let selectCategorie = [...categories];
       let categoryName = '';
-      let updatedList = [...books];
+      let updatedList = [...data];
 
       selectCategorie = selectCategorie.filter(
         (item) => item.path.toLowerCase().indexOf(category.toLowerCase()) !== -1
@@ -55,7 +73,7 @@ export const MainPage = () => {
 
       setFilteredList(updatedList);
     }
-  }, [books, categories, category]);
+  }, [data, categories, category]);
 
   useEffect(() => {
     dispatch(getSearch(filteredList));
@@ -91,12 +109,12 @@ export const MainPage = () => {
             </div>
           </div>
         ) : (
-          books && (
+          data && (
             <React.Fragment>
               <div className='menu'>
                 <div className='menu-container'>
-                  <Search books={books} />
-                  <Filter books={books} />
+                  <Search books={data} />
+                  <Filter books={data} />
                 </div>
                 {mainState === 'grid' ? (
                   <div className='main-btns'>
@@ -135,7 +153,7 @@ export const MainPage = () => {
                 )}
               </div>
 
-              <Cards books={search ? search : sort ? sort : books} state={mainState} />
+              <Cards books={search ? search : data} state={mainState} />
             </React.Fragment>
           )
         )}
