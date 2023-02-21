@@ -21,7 +21,6 @@ export const MainPage = () => {
   const errorCategories = useSelector((state) => state.reducer.errorCategories);
   const isShow = useSelector((state) => state.reducer.isShow);
   const search = useSelector((state) => state.reducer.search);
-  const sort = useSelector((state) => state.reducer.sort);
   const [filteredList, setFilteredList] = useState(books);
   const [data, setData] = useState(books);
 

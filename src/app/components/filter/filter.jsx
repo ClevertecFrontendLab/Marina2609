@@ -12,8 +12,8 @@ export const Filter = (props) => {
 
   const toggleSort = () => {
     let updatedList = [...props.books];
-
-    if (isToggle === true) {
+    console.log(updatedList);
+    if (isToggle === false) {
       updatedList = updatedList.sort((a, b) => {
         if (a.rating < b.rating) {
           return 1;

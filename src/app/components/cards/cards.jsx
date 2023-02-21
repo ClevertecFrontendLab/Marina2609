@@ -20,8 +20,6 @@ export const Cards = (props) => {
     }
   }, [props.books, search]);
 
-  console.log(props.books);
-
   return (
     <div className={props.state === 'grid' ? 'books-grid' : 'books-list'}>
       {isVisibleMessage ? (
