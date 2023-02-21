@@ -27,9 +27,10 @@
   line-height: 18px;
   letter-spacing: 0.1px;
   color: #a7a7a7;
-  width: 94px;
+  /* width: 94px; */
   border: 0;
   outline: none;
+  caret-color: transparent;
 }
 
 @media screen and (max-width: 760px) {
