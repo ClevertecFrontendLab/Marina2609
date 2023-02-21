@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -11,6 +11,7 @@ export const Aside = (props) => {
   const categories = useSelector((state) => state.reducer.categories);
   const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const books = useSelector((state) => state.reducer.books);
+  const [count, setCount] = useState('');
 
   const toggleArrow = () => {
     if (arrow === 'arrow-down') {
@@ -21,6 +22,16 @@ export const Aside = (props) => {
 
     setIsGenresOpen(!isGenresOpen);
   };
+
+  useEffect(() => {
+    const array = [];
+    const arrayCount = [];
+
+    categories.map((categorie) => array.push(books.filter((item) => item.categories.indexOf(categorie.name) !== -1)));
+
+    array.map((elem) => arrayCount.push(elem.length));
+    setCount(arrayCount);
+  }, [books, categories]);
 
   return (
     <aside data-test-id='burger-navigation'>
@@ -51,7 +62,7 @@ export const Aside = (props) => {
                   </NavLink>
                 </li>
 
-                {categories.map((categorie) => (
+                {categories.map((categorie, index) => (
                   <li className='aside-item' key={categorie.id}>
                     <NavLink
                       className='category-link'
@@ -74,7 +85,7 @@ export const Aside = (props) => {
                             : `navigation-book-count-for-${categorie.path}`
                         }
                       >
-                        {categorie.id}
+                        {count[index]}
                       </span>
                     </NavLink>
                   </li>
