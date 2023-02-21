@@ -47,9 +47,9 @@ export const Filter = (props) => {
   }, [dispatch, sortedList]);
 
   return (
-    <div className='filter-container' aria-hidden={true} onClick={toggleSort} data-test-id='sort-rating-button'>
+    <div className='filter-container' aria-hidden={true} onClick={toggleSort}>
       <div className='filter-icon' />
-      <input type='filter' className='filter' placeholder='По рейтингу' />
+      <input type='filter' className='filter' placeholder='По рейтингу' data-test-id='sort-rating-button' />
     </div>
   );
 };
