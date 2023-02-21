@@ -20,6 +20,8 @@ export const Cards = (props) => {
     }
   }, [props.books, search]);
 
+  console.log(props.books);
+
   return (
     <div className={props.state === 'grid' ? 'books-grid' : 'books-list'}>
       {isVisibleMessage ? (
@@ -29,7 +31,7 @@ export const Cards = (props) => {
       ) : (
         <React.Fragment>
           {props.books.map((book) => (
-            <div data-test-id='highlight-matches'>
+            <div>
               <NavLink
                 onClick={() => dispatch(getCategorie(book.categories))}
                 to={`/books/${book.categories}/${book.id}`}
@@ -61,7 +63,10 @@ export const Cards = (props) => {
                         )}
                       </div>
                       <div className={props.state === 'grid' ? 'book-title-container' : ''}>
-                        <div className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}>
+                        <div
+                          className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}
+                          data-test-id='highlight-matches'
+                        >
                           {book.title}
                         </div>
                       </div>

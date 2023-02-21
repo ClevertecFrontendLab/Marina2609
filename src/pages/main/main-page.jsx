@@ -73,7 +73,7 @@ export const MainPage = () => {
     dispatch(getError(false));
   };
 
-  console.log(search);
+  // console.log(sort);
 
   return (
     <article className='article'>
@@ -135,7 +135,7 @@ export const MainPage = () => {
                 )}
               </div>
 
-              <Cards books={search ? search : sort ? sort : books} state={mainState} />
+              <Cards books={sort ? sort : search ? search : books} state={mainState} />
             </React.Fragment>
           )
         )}

@@ -17,10 +17,10 @@ export const Filter = (props) => {
 
     if (isToggle === true) {
       updatedList = updatedList.sort((a, b) => {
-        if (a.rating < b.rating) {
+        if (a.rating > b.rating) {
           return 1;
         }
-        if (a.rating > b.rating) {
+        if (a.rating < b.rating) {
           return -1;
         }
 
@@ -28,10 +28,10 @@ export const Filter = (props) => {
       });
     } else {
       updatedList = updatedList.sort((a, b) => {
-        if (a.rating > b.rating) {
+        if (a.rating < b.rating) {
           return 1;
         }
-        if (a.rating < b.rating) {
+        if (a.rating > b.rating) {
           return -1;
         }
 
