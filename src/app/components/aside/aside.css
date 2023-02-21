@@ -1,0 +1,140 @@
+#aside-container {
+  margin-right: 30px;
+}
+
+aside {
+  max-width: 285px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+}
+
+.underline {
+  border-bottom: 1px solid #f85d08;
+  padding: 0 0 8px;
+  max-width: 255px;
+}
+
+.none {
+  /* display: none; */
+  visibility: hidden;
+  height: 0;
+}
+
+.genres {
+  display: -webkit-box;
+  gap: 78px;
+}
+
+.category-link {
+  display: flex;
+  gap: 6px;
+}
+
+.navItem {
+  visibility: hidden;
+}
+
+.navItemActive {
+  visibility: visible;
+}
+
+/* a {
+  
+}
+
+a:hover {
+} 
+
+a:visited {}
+*/
+
+.active {
+  color: #f85907;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.1px;
+  line-height: 27px;
+  /* padding-top: 16px; */
+}
+
+.link-active {
+  color: #f85907;
+  border-bottom: 1px solid #f85d08;
+  padding: 0 0 8px;
+  width: 255px;
+}
+
+.aside-list-books {
+  padding-bottom: 25px;
+  padding-top: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.1px;
+}
+
+.aside-list {
+  padding-bottom: 42px;
+}
+
+.all-books {
+  padding: 0 10px 0 20px;
+}
+
+.aside-list-books > ul > li:not(:nth-child(1)) {
+  padding: 16px 1px 0 24px;
+}
+
+.hide {
+  /* overflow: hidden; */
+  visibility: hidden;
+  height: 0;
+}
+
+.aside-item {
+  display: block;
+}
+
+.count {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+  /* padding-left: 3px; */
+}
+
+.arrow {
+  width: 14px;
+  height: 8px;
+  margin: 9px;
+}
+
+.arrow-down {
+  background-image: url('../../../../public/assets/img/arrowDown.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.arrow-up {
+  background-image: url('../../../../public/assets/img/arrowUp.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 1264px) {
+  .wrapper aside {
+    display: none;
+    /* overflow: hidden;
+    height: 0; */
+  }
+
+  #aside-container {
+    margin-right: 0;
+  }
+}
