@@ -13,7 +13,7 @@ export const Filter = (props) => {
   const toggleSort = () => {
     let updatedList = [...props.books];
     console.log(updatedList);
-    if (isToggle === false) {
+    if (isToggle === true) {
       updatedList = updatedList.sort((a, b) => {
         if (a.rating < b.rating) {
           return 1;
@@ -47,7 +47,13 @@ export const Filter = (props) => {
   return (
     <div className='filter-container' aria-hidden={true} onClick={toggleSort}>
       <div className='filter-icon' />
-      <input type='filter' className='filter' placeholder='По рейтингу' data-test-id='sort-rating-button' />
+      <input
+        type='filter'
+        className='filter'
+        placeholder='По рейтингу'
+        onClick={toggleSort}
+        data-test-id='sort-rating-button'
+      />
     </div>
   );
 };
