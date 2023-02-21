@@ -39,7 +39,7 @@ export const Cards = (props) => {
                 aria-hidden={false}
               >
                 <div
-                  data-test-id='card'
+                  // data-test-id='card'
                   className={props.state === 'grid' ? 'book-grid-container' : 'book-list-container'}
                 >
                   <div className={props.state === 'grid' ? '' : 'book-cover'}>
@@ -65,7 +65,8 @@ export const Cards = (props) => {
                       <div className={props.state === 'grid' ? 'book-title-container' : ''}>
                         <div
                           className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}
-                          data-test-id='highlight-matches'
+                          // data-test-id='highlight-matches'
+                          data-test-id='card'
                         >
                           {book.title}
                         </div>
