@@ -11,8 +11,6 @@ export const Filter = (props) => {
   const dispatch = useDispatch();
 
   const toggleSort = () => {
-    setIsToggle(!isToggle);
-
     let updatedList = [...props.books];
 
     if (isToggle === true) {
@@ -38,7 +36,7 @@ export const Filter = (props) => {
         return 0;
       });
     }
-
+    setIsToggle(!isToggle);
     setSortedList(updatedList);
   };
 
