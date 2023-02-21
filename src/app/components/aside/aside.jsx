@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+
+import { getFilter } from '../../../redux/actions/actions';
 
 import './aside.css';
 
@@ -12,6 +14,7 @@ export const Aside = (props) => {
   const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const books = useSelector((state) => state.reducer.books);
   const [count, setCount] = useState('');
+  const dispatch = useDispatch();
 
   const toggleArrow = () => {
     if (arrow === 'arrow-down') {
@@ -71,6 +74,7 @@ export const Aside = (props) => {
                       state={{
                         props: books,
                       }}
+                      onClick={() => (count[index] === 0 ? dispatch(getFilter(true)) : dispatch(getFilter(false)))}
                       // onClick={toggleArrow}
                     >
                       <div data-test-id={props.isBurger ? `burger-${categorie.path}` : `navigation-${categorie.path}`}>

@@ -4,12 +4,12 @@ import {
   CATEGORIE,
   ERROR,
   FAILED,
+  FILTER,
   GET_BOOK_BY_ID,
   GET_BOOKS,
   GET_CATEGORIES,
   REQUEST,
   SEARCH,
-  SORTING,
 } from './actions-types';
 
 export const fetchBooksRequest = () => ({
@@ -60,9 +60,9 @@ export const fetchSearch = (search) => ({
   payload: search,
 });
 
-export const fetchSort = (sort) => ({
-  type: SORTING,
-  payload: sort,
+export const fetchFilter = (filter) => ({
+  type: FILTER,
+  payload: filter,
 });
 
 export const getBooks = () => (dispatch) => {
@@ -122,6 +122,6 @@ export const getSearch = (search) => async (dispatch) => {
   dispatch(fetchSearch(search));
 };
 
-export const getSort = (sort) => async (dispatch) => {
-  dispatch(fetchSort(sort));
+export const getFilter = (filter) => async (dispatch) => {
+  dispatch(fetchFilter(filter));
 };

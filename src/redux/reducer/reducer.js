@@ -2,12 +2,12 @@ import {
   CATEGORIE,
   ERROR,
   FAILED,
+  FILTER,
   GET_BOOK_BY_ID,
   GET_BOOKS,
   GET_CATEGORIES,
   REQUEST,
   SEARCH,
-  SORTING,
 } from '../actions/actions-types';
 
 const initialState = {
@@ -21,7 +21,7 @@ const initialState = {
   errorCategories: '',
   isShow: false,
   search: [],
-  sort: [],
+  filter: false,
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -54,8 +54,8 @@ export const reducer = (state = initialState, { type, payload }) => {
     case SEARCH:
       return { ...state, search: payload };
 
-    case SORTING:
-      return { ...state, sort: payload };
+    case FILTER:
+      return { ...state, filter: payload };
 
     default:
       return state;

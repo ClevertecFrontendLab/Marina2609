@@ -6,4 +6,4 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_BOOK_BY_ID = 'GET_BOOK_BY_ID';
 export const CATEGORIE = 'CATEGORIE';
 export const SEARCH = 'SEARCH';
-export const SORTING = 'SORTING';
+export const FILTER = 'FILTER';

@@ -12,7 +12,6 @@ import './main-page.css';
 
 export const MainPage = () => {
   const [mainState, setMainState] = useState('grid');
-
   const books = useSelector((state) => state.reducer.books);
   const categories = useSelector((state) => state.reducer.categories);
   const isLoading = useSelector((state) => state.reducer.isLoading);

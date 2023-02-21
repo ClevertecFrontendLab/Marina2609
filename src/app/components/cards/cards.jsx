@@ -9,16 +9,27 @@ import './cards.css';
 
 export const Cards = (props) => {
   const [isVisibleMessage, setIsVisibleMessage] = useState(false);
+  const [isMessage, setIsMessage] = useState(false);
   const search = useSelector((state) => state.reducer.search);
+  const filter = useSelector((state) => state.reducer.filter);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (search && props.books.length === 0) {
+    console.log(search.length);
+    console.log(filter);
+    console.log(props.books.length);
+
+    if (filter) {
+      setIsVisibleMessage(false);
+      setIsMessage(true);
+    } else if (search && props.books.length === 0) {
       setIsVisibleMessage(true);
+      setIsMessage(false);
     } else {
       setIsVisibleMessage(false);
+      setIsMessage(false);
     }
-  }, [props.books, search]);
+  }, [filter, props.books, search]);
 
   // console.log(props.books);
 
@@ -27,6 +38,10 @@ export const Cards = (props) => {
       {isVisibleMessage ? (
         <div data-test-id='search-result-not-found' className=''>
           По запросу ничего не найдено
+        </div>
+      ) : isMessage ? (
+        <div data-test-id='empty-category' className=''>
+          В этой категории книг ещё нет
         </div>
       ) : (
         <React.Fragment>
