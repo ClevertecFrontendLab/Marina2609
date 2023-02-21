@@ -135,7 +135,7 @@ export const MainPage = () => {
                 )}
               </div>
 
-              <Cards books={sort ? sort : search ? search : books} state={mainState} />
+              <Cards books={search ? search : sort ? sort : books} state={mainState} />
             </React.Fragment>
           )
         )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getSort } from '../../../redux/actions/actions';
+import { getSearch } from '../../../redux/actions/actions';
 
 import './filter.css';
 
@@ -43,7 +43,7 @@ export const Filter = (props) => {
   };
 
   useEffect(() => {
-    dispatch(getSort(sortedList));
+    dispatch(getSearch(sortedList));
   }, [dispatch, sortedList]);
 
   return (
