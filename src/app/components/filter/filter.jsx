@@ -48,11 +48,11 @@ export const Filter = (props) => {
     <div className='filter-container'>
       <div className='filter-icon' />
       <input
+        data-test-id='sort-rating-button'
         type='filter'
         className='filter'
         placeholder='По рейтингу'
         onClick={toggleSort}
-        data-test-id='sort-rating-button'
       />
     </div>
   );
