@@ -61,9 +61,12 @@ export const BookPage = () => {
     <section className='book-page'>
       <div className='navigation-menu'>
         <div className='book-title'>
-          {crumbs[1]}
+          <NavLink data-test-id='breadcrumbs-link'>{crumbs[1]}</NavLink>
+
           <div />
-          <div className='crambs'> {book.title}</div>
+          <div className='crambs' data-test-id='book-name'>
+            {book.title}
+          </div>
         </div>
       </div>
       {isLoading ? (
@@ -87,7 +90,9 @@ export const BookPage = () => {
               </div>
 
               <div className='col-span-2 book-description'>
-                <div className='title'>{book.title}</div>
+                <div className='title' data-test-id='book-title'>
+                  {book.title}
+                </div>
                 <div className='autor'>
                   {book.authors}, {book.issueYear}
                 </div>

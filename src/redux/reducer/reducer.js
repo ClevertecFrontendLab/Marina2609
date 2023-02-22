@@ -1,4 +1,15 @@
-import { CATEGORIE, ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from '../actions/actions-types';
+import {
+  CATEGORIE,
+  ERROR,
+  FAILED,
+  FILTER,
+  GET_BOOK_BY_ID,
+  GET_BOOKS,
+  GET_CATEGORIES,
+  REQUEST,
+  SEARCH,
+  SEARCH_VALUE,
+} from '../actions/actions-types';
 
 const initialState = {
   isLoading: false,
@@ -10,6 +21,9 @@ const initialState = {
   error: '',
   errorCategories: '',
   isShow: false,
+  search: [],
+  searchValue: [],
+  filter: false,
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -38,6 +52,15 @@ export const reducer = (state = initialState, { type, payload }) => {
 
     case CATEGORIE:
       return { ...state, categorie: payload };
+
+    case SEARCH:
+      return { ...state, search: payload };
+
+    case SEARCH_VALUE:
+      return { ...state, searchValue: payload };
+
+    case FILTER:
+      return { ...state, filter: payload };
 
     default:
       return state;

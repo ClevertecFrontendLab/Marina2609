@@ -5,3 +5,6 @@ export const ERROR = 'ERROR';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_BOOK_BY_ID = 'GET_BOOK_BY_ID';
 export const CATEGORIE = 'CATEGORIE';
+export const SEARCH = 'SEARCH';
+export const SEARCH_VALUE = 'SEARCH_VALUE';
+export const FILTER = 'FILTER';

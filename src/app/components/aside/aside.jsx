@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+
+import { getFilter } from '../../../redux/actions/actions';
 
 import './aside.css';
 
@@ -11,6 +13,8 @@ export const Aside = (props) => {
   const categories = useSelector((state) => state.reducer.categories);
   const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const books = useSelector((state) => state.reducer.books);
+  const [count, setCount] = useState('');
+  const dispatch = useDispatch();
 
   const toggleArrow = () => {
     if (arrow === 'arrow-down') {
@@ -22,13 +26,23 @@ export const Aside = (props) => {
     setIsGenresOpen(!isGenresOpen);
   };
 
+  useEffect(() => {
+    const array = [];
+    const arrayCount = [];
+
+    categories.map((categorie) => array.push(books.filter((item) => item.categories.indexOf(categorie.name) !== -1)));
+
+    array.map((elem) => arrayCount.push(elem.length));
+    setCount(arrayCount);
+  }, [books, categories]);
+
   return (
     <aside data-test-id='burger-navigation'>
       <nav className='aside-nav'>
         <h2>
           <div
             aria-hidden={true}
-            className={classNames('genres  link-active', { '': !isGenresOpen })}
+            className={classNames('genres link-active', { '': !isGenresOpen })}
             onClick={toggleArrow}
             data-test-id={props.isBurger ? 'burger-showcase' : 'navigation-showcase'}
           >
@@ -51,17 +65,32 @@ export const Aside = (props) => {
                   </NavLink>
                 </li>
 
-                {categories.map((categorie) => (
+                {categories.map((categorie, index) => (
                   <li className='aside-item' key={categorie.id}>
                     <NavLink
+                      className='category-link'
                       aria-hidden={false}
                       to={`books/${categorie.path}`}
                       state={{
                         props: books,
                       }}
-                      onClick={toggleArrow}
+                      onClick={() => (count[index] === 0 ? dispatch(getFilter(true)) : dispatch(getFilter(false)))}
+                      // onClick={toggleArrow}
                     >
-                      {categorie.name} <span className='count'>{categorie.id} </span>
+                      <div data-test-id={props.isBurger ? `burger-${categorie.path}` : `navigation-${categorie.path}`}>
+                        {categorie.name}
+                      </div>
+
+                      <span
+                        className='count'
+                        data-test-id={
+                          props.isBurger
+                            ? `burger-book-count-for-${categorie.path}`
+                            : `navigation-book-count-for-${categorie.path}`
+                        }
+                      >
+                        {count[index]}
+                      </span>
                     </NavLink>
                   </li>
                 ))}
@@ -76,9 +105,7 @@ export const Aside = (props) => {
               data-test-id={props.isBurger ? 'burger-terms' : 'navigation-terms'}
               to='/rule'
               className={({ isActive }) => (isActive ? ' link-active' : '')}
-              onClick={() => {
-                toggleArrow();
-              }}
+              onClick={toggleArrow}
             >
               Правила пользования
             </NavLink>
@@ -90,9 +117,7 @@ export const Aside = (props) => {
               data-test-id={props.isBurger ? 'burger-contract' : 'navigation-contract'}
               to='/document'
               className={({ isActive }) => (isActive ? ' link-active' : '')}
-              onClick={() => {
-                toggleArrow();
-              }}
+              onClick={toggleArrow}
             >
               Договор оферты
             </NavLink>

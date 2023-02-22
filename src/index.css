@@ -136,6 +136,12 @@ main {
   }
 }
 
+@media screen and (max-width: 892px) {
+  .wrapper {
+    padding: 0 65px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   body {
     padding: 0;

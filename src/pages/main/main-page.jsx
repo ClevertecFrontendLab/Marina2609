@@ -1,23 +1,46 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { Cards } from '../../app/components/cards/cards';
 import { Filter } from '../../app/components/filter/filter';
 import { Search } from '../../app/components/search/search';
-import { getBooks, getCategories, getError } from '../../redux/actions/actions';
+import { getBooks, getCategories, getError, getSearch } from '../../redux/actions/actions';
 
 import './main-page.css';
 
 export const MainPage = () => {
   const [mainState, setMainState] = useState('grid');
+
   const books = useSelector((state) => state.reducer.books);
+  const categories = useSelector((state) => state.reducer.categories);
   const isLoading = useSelector((state) => state.reducer.isLoading);
   const error = useSelector((state) => state.reducer.error);
   const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const errorCategories = useSelector((state) => state.reducer.errorCategories);
   const isShow = useSelector((state) => state.reducer.isShow);
+  const search = useSelector((state) => state.reducer.search);
+  const [filteredList, setFilteredList] = useState(books);
+  const [data, setData] = useState(books);
+
+  const { category } = useParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setData(
+      books.sort((a, b) => {
+        if (a.rating < b.rating) {
+          return 1;
+        }
+        if (a.rating > b.rating) {
+          return -1;
+        }
+
+        return 0;
+      })
+    );
+  }, [books]);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -30,6 +53,31 @@ export const MainPage = () => {
     }
   }, [dispatch, error, errorCategories]);
 
+  useEffect(() => {
+    if (category === 'all') {
+      setFilteredList(data);
+    } else {
+      let selectCategorie = [...categories];
+      let categoryName = '';
+      let updatedList = [...data];
+
+      selectCategorie = selectCategorie.filter(
+        (item) => item.path.toLowerCase().indexOf(category.toLowerCase()) !== -1
+      );
+      categoryName = selectCategorie[0].name;
+
+      updatedList = updatedList.filter(
+        (item) => item.categories[0].toLowerCase().indexOf(categoryName.toLowerCase()) !== -1
+      );
+
+      setFilteredList(updatedList);
+    }
+  }, [data, categories, category]);
+
+  useEffect(() => {
+    dispatch(getSearch(filteredList));
+  }, [filteredList, dispatch]);
+
   const toggle = (e) => {
     e.preventDefault();
 
@@ -41,6 +89,8 @@ export const MainPage = () => {
   const closeError = () => {
     dispatch(getError(false));
   };
+
+  // console.log(sort);
 
   return (
     <article className='article'>
@@ -58,12 +108,12 @@ export const MainPage = () => {
             </div>
           </div>
         ) : (
-          books && (
+          data && (
             <React.Fragment>
               <div className='menu'>
                 <div className='menu-container'>
-                  <Search />
-                  <Filter />
+                  <Search books={data} />
+                  <Filter books={data} />
                 </div>
                 {mainState === 'grid' ? (
                   <div className='main-btns'>
@@ -101,7 +151,8 @@ export const MainPage = () => {
                   </div>
                 )}
               </div>
-              <Cards books={books} state={mainState} />
+
+              <Cards books={search ? search : data} state={mainState} />
             </React.Fragment>
           )
         )}
