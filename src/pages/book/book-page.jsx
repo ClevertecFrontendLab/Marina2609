@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 import { Loader } from '../../app/components/loader/loader';
 import { ErrorMessage } from '../../app/components/messages/error-message/error-message';
 import { Rating } from '../../app/components/rating/rating';
 import { Slider } from '../../app/components/slider/slider';
-import { getBook, getCategorie } from '../../redux/actions/actions';
+import { getBook } from '../../redux/actions/actions';
 
 import './book-page.css';
 
-export const BookPage = () => {
+export const BookPage = (props) => {
   const { id } = useParams();
   const [arrow, setArrow] = useState('down');
   const [isReviewOpen, toggleReview] = useState(true);
@@ -50,7 +50,7 @@ export const BookPage = () => {
     <section className='book-page'>
       <div className='navigation-menu'>
         <div className='book-title'>
-          <NavLink data-test-id='breadcrumbs-link' to={`/books/${category}`}>
+          <NavLink data-test-id='breadcrumbs-link' to={props.isBurger ? `/${category}` : `/books/${category}`}>
             {categorieValue}
           </NavLink>
           <div className='slash' />

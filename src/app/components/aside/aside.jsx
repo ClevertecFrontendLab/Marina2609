@@ -60,7 +60,7 @@ export const Aside = (props) => {
                 <li className='nav__all-books nav__item'>
                   <NavLink
                     data-test-id={props.isBurger ? 'burger-books' : 'navigation-books'}
-                    to='books/all'
+                    to={props.isBurger ? '/books/all' : 'books/all'}
                     className={classNames('nav__item', { 'nav__all-books': isGenresOpen })}
                     aria-hidden={false}
                     onClick={() => (props.isBurger ? toggleArrow() : '')}
@@ -74,7 +74,7 @@ export const Aside = (props) => {
                     <NavLink
                       className='nav__link'
                       aria-hidden={false}
-                      to={`books/${category.path}`}
+                      to={props.isBurger ? `/books/${category.path}` : `books/${category.path}`}
                       state={{
                         props: books,
                       }}

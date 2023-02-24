@@ -26,7 +26,7 @@ export const Slider = (props) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
         modules={[FreeMode, Navigation, Thumbs, Pagination]}
-        className='swiper'
+        className='big-swiper'
         data-test-id='slide-big'
         pagination={{
           clickable: true,
@@ -58,7 +58,7 @@ export const Slider = (props) => {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
-          className='swiper2'
+          className='mini-swiper'
           data-test-id='slide-mini'
         >
           {data.book.images.map((pic) => (

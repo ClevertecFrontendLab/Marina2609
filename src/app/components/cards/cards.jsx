@@ -46,7 +46,7 @@ export const Cards = (props) => {
                 onClick={() => {
                   dispatch(getCategorie(book.categories));
                 }}
-                to={`/books/${category}/${book.id}`}
+                to={`/books/${category ? category : 'all'}/${book.id}`}
                 aria-hidden={false}
               >
                 <div
