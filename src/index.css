@@ -89,22 +89,6 @@ body {
   height: 100%;
 }
 
-main {
-  background-color: #fff;
-  flex: 1 0 auto;
-}
-
-.wrapper {
-  display: flex;
-  padding: 0 165px;
-  margin-top: 20px;
-  gap: 30px;
-}
-
-.wrapper {
-  padding: 0 165px;
-}
-
 .not-visible {
   display: none;
 }
@@ -112,11 +96,6 @@ main {
 @media screen and (max-width: 1264px) {
   body {
     padding: 0 100px;
-  }
-
-  .wrapper {
-    padding: 0 105px;
-    display: block;
   }
 
   .article {
@@ -136,18 +115,8 @@ main {
   }
 }
 
-@media screen and (max-width: 892px) {
-  .wrapper {
-    padding: 0 65px;
-  }
-}
-
 @media screen and (max-width: 768px) {
   body {
-    padding: 0;
-  }
-
-  .wrapper {
     padding: 0;
   }
 }
@@ -155,15 +124,5 @@ main {
 @media screen and (max-width: 760px) {
   body {
     padding: 0;
-  }
-
-  .wrapper {
-    padding: 0 65px;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  .wrapper {
-    padding: 0 16px;
   }
 }

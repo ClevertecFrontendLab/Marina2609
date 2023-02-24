@@ -20,7 +20,8 @@ root.render(
     <Provider store={store}>
       <Routes>
         <Route path='/' element={<AppLayout />}>
-          <Route path='/' element={<Navigate to='books/all' />} />
+          {/* <Route path='/' element={<Navigate to='/all' />} /> */}
+          <Route index={true} element={<MainPage />} />
           <Route path='books/:category' element={<MainPage />} />
           <Route path='rule' element={<RulePage />} />
           <Route path='document' element={<DocumentPage />} />

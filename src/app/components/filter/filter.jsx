@@ -45,9 +45,9 @@ export const Filter = (props) => {
   }, [dispatch, sortedList]);
 
   return (
-    <div className='filter-container'>
-      <div className='filter-icon' />
-      <button className='filter' type='button' onClick={toggleSort} data-test-id='sort-rating-button'>
+    <div className='filter'>
+      <div className={isToggle ? 'filter__icon-up' : 'filter__icon-down'} />
+      <button className='filter__button' type='button' onClick={toggleSort} data-test-id='sort-rating-button'>
         По рейтингу
       </button>
     </div>

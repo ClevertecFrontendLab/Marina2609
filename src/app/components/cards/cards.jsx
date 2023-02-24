@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 import { getCategorie } from '../../../redux/actions/actions';
 import { BookTitle } from '../book-title/book-title';
+import { BookNotFound } from '../messages/book-not-found/book-not-found';
+import { NoBooks } from '../messages/no-books/no-books';
 import { Rating } from '../rating/rating';
 
 import './cards.css';
@@ -15,14 +17,15 @@ export const Cards = (props) => {
   const searchValue = useSelector((state) => state.reducer.searchValue);
   const filter = useSelector((state) => state.reducer.filter);
   const dispatch = useDispatch();
+  const { category } = useParams();
 
   useEffect(() => {
-    if (filter) {
-      setIsVisibleMessage(false);
-      setIsMessage(true);
-    } else if (search && props.books.length === 0) {
+    if (filter && search && search.length === 0) {
       setIsVisibleMessage(true);
       setIsMessage(false);
+    } else if (!filter && search && search.length === 0) {
+      setIsVisibleMessage(false);
+      setIsMessage(true);
     } else {
       setIsVisibleMessage(false);
       setIsMessage(false);
@@ -30,22 +33,20 @@ export const Cards = (props) => {
   }, [filter, props.books, search]);
 
   return (
-    <div className={props.state === 'grid' ? 'books-grid' : 'books-list'}>
-      {isVisibleMessage ? (
-        <div data-test-id='search-result-not-found' className=''>
-          По запросу ничего не найдено
-        </div>
-      ) : isMessage ? (
-        <div data-test-id='empty-category' className=''>
-          В этой категории книг ещё нет
-        </div>
+    <div className={props.state === 'grid' ? 'books__grid' : 'books__list'}>
+      {isMessage ? (
+        <BookNotFound />
+      ) : isVisibleMessage ? (
+        <NoBooks />
       ) : (
         <React.Fragment>
           {props.books.map((book) => (
             <div key={book.id}>
               <NavLink
-                onClick={() => dispatch(getCategorie(book.categories))}
-                to={`/books/${book.categories}/${book.id}`}
+                onClick={() => {
+                  dispatch(getCategorie(book.categories));
+                }}
+                to={`/books/${category}/${book.id}`}
                 aria-hidden={false}
               >
                 <div
@@ -73,11 +74,7 @@ export const Cards = (props) => {
                         )}
                       </div>
                       <div className={props.state === 'grid' ? 'book-title-container' : ''}>
-                        <div
-                          className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}
-                          // data-test-id='highlight-matches'
-                        >
-                          {/* {book.title} */}
+                        <div className={props.state === 'grid' ? 'book-grid-title' : 'book-list-title'}>
                           <BookTitle title={book.title} filter={searchValue} />
                         </div>
                       </div>

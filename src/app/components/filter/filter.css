@@ -1,4 +1,4 @@
-.filter-container {
+.filter {
   display: inline-flex;
   border-radius: 40px;
   width: 150px;
@@ -11,17 +11,27 @@
   box-shadow: 0px 2px 4px rgb(191 196 201 / 20%), 0px 3px 4px rgb(191 196 201 / 18%), 0px 1px 5px rgb(191 196 201 / 24%);
 }
 
-.filter-icon {
+.filter__icon-down {
   width: 30px;
   height: 30px;
   order: -1;
-  background-image: url('../../../../public/assets/img/filter.svg');
+  background-image: url('../../../../public/assets/img/filter-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   margin: 4px 1px 0 9px;
 }
 
-.filter {
+.filter__icon-up {
+  width: 30px;
+  height: 30px;
+  order: -1;
+  background-image: url('../../../../public/assets/img/filter-up.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 4px 1px 0 9px;
+}
+
+.filter__button {
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -35,8 +45,30 @@
 }
 
 @media screen and (max-width: 760px) {
-  .filter-icon {
+  .filter {
+    width: 38px;
+    height: 38px;
+  }
+
+  .filter__icon {
     width: 400px;
     margin: 2px 1px 0 6px;
+  }
+
+  .filter__button {
+    overflow: hidden;
+    height: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .filter {
+    width: 32px;
+    height: 32px;
+  }
+
+  .filter__button {
+    overflow: hidden;
+    height: 0;
   }
 }

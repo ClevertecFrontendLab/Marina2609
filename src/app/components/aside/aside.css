@@ -1,7 +1,3 @@
-#aside-container {
-  margin-right: 30px;
-}
-
 aside {
   max-width: 285px;
   width: 100%;
@@ -17,18 +13,18 @@ aside {
   max-width: 255px;
 }
 
-.none {
+.nav__none {
   /* display: none; */
   visibility: hidden;
   height: 0;
 }
 
-.genres {
+.nav__genres {
   display: -webkit-box;
   gap: 78px;
 }
 
-.category-link {
+.nav__link {
   display: flex;
   gap: 6px;
 }
@@ -51,23 +47,14 @@ a:hover {
 a:visited {}
 */
 
-.active {
-  color: #f85907;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.1px;
-  line-height: 27px;
-  /* padding-top: 16px; */
-}
-
-.link-active {
+.nav__link-active {
   color: #f85907;
   border-bottom: 1px solid #f85d08;
   padding: 0 0 8px;
   width: 255px;
 }
 
-.aside-list-books {
+.nav__list-books {
   padding-bottom: 25px;
   padding-top: 16px;
   font-weight: 400;
@@ -76,15 +63,15 @@ a:visited {}
   letter-spacing: 0.1px;
 }
 
-.aside-list {
+.nav__list {
   padding-bottom: 42px;
 }
 
-.all-books {
+.nav__all-books {
   padding: 0 10px 0 20px;
 }
 
-.aside-list-books > ul > li:not(:nth-child(1)) {
+.nav__list-books > ul > li:not(:nth-child(1)) {
   padding: 16px 1px 0 24px;
 }
 
@@ -94,11 +81,11 @@ a:visited {}
   height: 0;
 }
 
-.aside-item {
+.nav__item {
   display: block;
 }
 
-.count {
+.nav__count {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;

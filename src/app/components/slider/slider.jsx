@@ -26,7 +26,7 @@ export const Slider = (props) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
         modules={[FreeMode, Navigation, Thumbs, Pagination]}
-        className='mySwiper2'
+        className='swiper'
         data-test-id='slide-big'
         pagination={{
           clickable: true,
@@ -42,8 +42,8 @@ export const Slider = (props) => {
           </React.Fragment>
         ) : (
           <SwiperSlide>
-            <div className='cover-container'>
-              <div className='cat' />
+            <div className='cover'>
+              <div className='cover__cat' />
             </div>
           </SwiperSlide>
         )}
@@ -58,7 +58,7 @@ export const Slider = (props) => {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
-          className='mySwiper'
+          className='swiper2'
           data-test-id='slide-mini'
         >
           {data.book.images.map((pic) => (

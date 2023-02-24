@@ -35,9 +35,9 @@ export const Search = (props) => {
   }, [dispatch, filteredList]);
 
   return (
-    <div className={classNames('search-container', { 'hide-search': isVisible })}>
+    <div className={classNames('search', { search__hide: isVisible })}>
       <div
-        className={classNames('search-icon', { 'hide-icon': isVisible })}
+        className={classNames('search__icon', { search__icon_hide: isVisible })}
         aria-hidden={true}
         data-test-id='button-search-open'
         onClick={toggleSearchOpen}
@@ -45,14 +45,14 @@ export const Search = (props) => {
 
       <input
         type='text'
-        className={isVisible ? 'visible-search' : 'search'}
+        className={isVisible ? 'search__input_visible' : 'search__input'}
         placeholder='Поиск книги или автора…'
         onChange={filterBySearch}
         onClick={toggleSearchOpen}
         data-test-id='input-search'
       />
       <div
-        className={isVisible ? classNames('close-icon', { '': isVisible }) : ''}
+        className={isVisible ? classNames('search__close', { '': isVisible }) : ''}
         aria-hidden={true}
         data-test-id='button-search-close'
         onClick={toggleSearchClose}

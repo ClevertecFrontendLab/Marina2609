@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './hightlight.css';
+
 export const HightLight = (props) => {
   const { title, filter } = props;
 

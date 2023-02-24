@@ -10,6 +10,7 @@ import './aside.css';
 export const Aside = (props) => {
   const [arrow, setArrow] = useState('arrow-up');
   const [isGenresOpen, setIsGenresOpen] = useState(false);
+  const [isMenuBooks, setIsMenuBooks] = useState(true);
   const categories = useSelector((state) => state.reducer.categories);
   const isLoadCategories = useSelector((state) => state.reducer.isLoadCategories);
   const books = useSelector((state) => state.reducer.books);
@@ -30,7 +31,7 @@ export const Aside = (props) => {
     const array = [];
     const arrayCount = [];
 
-    categories.map((categorie) => array.push(books.filter((item) => item.categories.indexOf(categorie.name) !== -1)));
+    categories.map((category) => array.push(books.filter((item) => item.categories.indexOf(category.name) !== -1)));
 
     array.map((elem) => arrayCount.push(elem.length));
     setCount(arrayCount);
@@ -38,55 +39,62 @@ export const Aside = (props) => {
 
   return (
     <aside data-test-id='burger-navigation'>
-      <nav className='aside-nav'>
+      <nav className='nav'>
         <h2>
-          <div
-            aria-hidden={true}
-            className={classNames('genres link-active', { '': !isGenresOpen })}
+          <NavLink
+            to='books/all'
+            className={classNames(isMenuBooks ? 'nav__genres nav__link-active' : 'nav__genres', {
+              '': !isGenresOpen,
+            })}
             onClick={toggleArrow}
             data-test-id={props.isBurger ? 'burger-showcase' : 'navigation-showcase'}
           >
             Витрина книг
             <div className={`arrow ${arrow}`} />
-          </div>
+          </NavLink>
         </h2>
-        <ul className={classNames('aside-list-books', { none: isGenresOpen })}>
+        <ul className={classNames('nav__list-books', { nav__none: isGenresOpen })}>
           <ul>
             {!isLoadCategories && categories && (
               <React.Fragment>
-                <li className=' all-books aside-item'>
+                <li className='nav__all-books nav__item'>
                   <NavLink
                     data-test-id={props.isBurger ? 'burger-books' : 'navigation-books'}
-                    to='/books/all'
-                    className={classNames('aside-item', { 'all-books': isGenresOpen })}
+                    to='books/all'
+                    className={classNames('nav__item', { 'nav__all-books': isGenresOpen })}
                     aria-hidden={false}
+                    onClick={() => (props.isBurger ? toggleArrow() : '')}
                   >
                     Все книги
                   </NavLink>
                 </li>
 
-                {categories.map((categorie, index) => (
-                  <li className='aside-item' key={categorie.id}>
+                {categories.map((category, index) => (
+                  <li className='nav__item' key={category.id}>
                     <NavLink
-                      className='category-link'
+                      className='nav__link'
                       aria-hidden={false}
-                      to={`books/${categorie.path}`}
+                      to={`books/${category.path}`}
                       state={{
                         props: books,
                       }}
-                      onClick={() => (count[index] === 0 ? dispatch(getFilter(true)) : dispatch(getFilter(false)))}
+                      onClick={() =>
+                        count[index] === 0
+                          ? dispatch(getFilter(true)) && (props.isBurger ? toggleArrow() : '')
+                          : dispatch(getFilter(false)) && (props.isBurger ? toggleArrow() : '') && setIsMenuBooks(true)
+                      }
                       // onClick={toggleArrow}
                     >
-                      <div data-test-id={props.isBurger ? `burger-${categorie.path}` : `navigation-${categorie.path}`}>
-                        {categorie.name}
+                      <div data-test-id={props.isBurger ? `burger-${category.path}` : `navigation-${category.path}`}>
+                        {category.name}
                       </div>
 
                       <span
-                        className='count'
+                        className='nav__count'
                         data-test-id={
                           props.isBurger
-                            ? `burger-book-count-for-${categorie.path}`
-                            : `navigation-book-count-for-${categorie.path}`
+                            ? `burger-book-count-for-${category.path}`
+                            : `navigation-book-count-for-${category.path}`
                         }
                       >
                         {count[index]}
@@ -99,25 +107,31 @@ export const Aside = (props) => {
           </ul>
         </ul>
 
-        <ul className='aside-list'>
+        <ul className='nav__list'>
           <h2>
             <NavLink
               data-test-id={props.isBurger ? 'burger-terms' : 'navigation-terms'}
               to='/rule'
-              className={({ isActive }) => (isActive ? ' link-active' : '')}
-              onClick={toggleArrow}
+              className={({ isActive }) => (isActive ? ' nav__link-active' : '')}
+              onClick={() => {
+                toggleArrow();
+                setIsMenuBooks(false);
+              }}
             >
               Правила пользования
             </NavLink>
           </h2>
         </ul>
-        <ul className='aside-list'>
+        <ul className='nav__list'>
           <h2>
             <NavLink
               data-test-id={props.isBurger ? 'burger-contract' : 'navigation-contract'}
               to='/document'
-              className={({ isActive }) => (isActive ? ' link-active' : '')}
-              onClick={toggleArrow}
+              className={({ isActive }) => (isActive ? ' nav__link-active' : '')}
+              onClick={() => {
+                toggleArrow();
+                setIsMenuBooks(false);
+              }}
             >
               Договор оферты
             </NavLink>

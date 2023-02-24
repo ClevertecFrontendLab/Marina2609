@@ -1,0 +1,26 @@
+.empty-category {
+  /* position: absolute; */
+  max-width: 825px;
+  width: 100%;
+  padding-top: 200px;
+  /* top: 390px; */
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+
+@media screen and (max-width: 768px) {
+  .empty-category {
+    padding-top: 150px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .empty-category {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
