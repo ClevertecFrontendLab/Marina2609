@@ -15,13 +15,15 @@
 .search__icon {
   width: 30px;
   height: 30px;
-  order: -1;
   background-image: url('../../../../public/assets/img/search.svg');
   background-repeat: no-repeat;
   background-position: center;
   margin: 4px 1px 0 9px;
 }
 
+.search__icon_active {
+  filter: brightness(0.5) sepia(1) hue-rotate(328deg) saturate(6);
+}
 .search__icon-active {
   /* filter: invert(100%);
   -webkit-filter: invert(100%); */

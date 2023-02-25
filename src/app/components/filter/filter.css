@@ -59,6 +59,12 @@
     overflow: hidden;
     height: 0;
   }
+
+  .filter__icon-down,
+  .filter__icon-up {
+    width: 500px;
+    margin: 2px 2px 0 7px;
+  }
 }
 
 @media screen and (max-width: 320px) {

@@ -46,7 +46,7 @@ export const Filter = (props) => {
 
   return (
     <div className='filter'>
-      <div className={isToggle ? 'filter__icon-up' : 'filter__icon-down'} />
+      <div aria-hidden={true} className={isToggle ? 'filter__icon-up' : 'filter__icon-down'} onClick={toggleSort} />
       <button className='filter__button' type='button' onClick={toggleSort} data-test-id='sort-rating-button'>
         По рейтингу
       </button>

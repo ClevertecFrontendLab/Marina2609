@@ -46,7 +46,10 @@ export const Aside = (props) => {
             className={classNames(isMenuBooks ? 'nav__genres nav__link-active' : 'nav__genres', {
               '': !isGenresOpen,
             })}
-            onClick={toggleArrow}
+            onClick={() => {
+              toggleArrow();
+              setIsMenuBooks(true);
+            }}
             data-test-id={props.isBurger ? 'burger-showcase' : 'navigation-showcase'}
           >
             Витрина книг
