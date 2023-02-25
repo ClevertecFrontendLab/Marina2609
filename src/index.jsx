@@ -20,7 +20,8 @@ root.render(
     <Provider store={store}>
       <Routes>
         <Route path='/' element={<AppLayout />}>
-          <Route path='/' element={<Navigate to='books/all' />} />
+          {/* <Route path='/' element={<Navigate to='/all' />} /> */}
+          <Route index={true} element={<MainPage />} />
           <Route path='books/:category' element={<MainPage />} />
           <Route path='rule' element={<RulePage />} />
           <Route path='document' element={<DocumentPage />} />
@@ -29,7 +30,7 @@ root.render(
           <Route path='logOut' element={<MainPage />} />
         </Route>
         <Route path='/books' element={<BookLayout />}>
-          <Route path='all/:id' element={<BookPage />} />
+          <Route path='/books/:category/:id' element={<BookPage />} />
         </Route>
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>

@@ -1,9 +1,14 @@
+.swiper {
+  width: 445px;
+  height: 593px;
+}
+
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
-
-  /* Center slide text vertically */
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,53 +22,59 @@
   border-radius: 3px;
 }
 
-body {
-  background: #000;
-  color: #000;
-}
-
-.swiper {
-  width: 445px;
-  height: 593px;
-}
-
-.swiper-slide {
-  background-size: cover;
-  background-position: center;
-}
-
-.mySwiper {
+.mini-swiper {
   height: 86px;
   box-sizing: border-box;
   padding: 10px 0;
 }
 
-.mySwiper .swiper-slide:not(:last-child) {
+.mini-swiper .swiper-slide:not(:last-child) {
   margin-right: 30px !important;
 }
 
-.mySwiper .swiper-slide {
+.mini-swiper .swiper-slide {
   width: 65px !important;
   height: 100%;
   opacity: 0.4;
 }
 
-.mySwiper .swiper-slide-thumb-active {
+.mini-swiper .swiper-slide-thumb-active {
   opacity: 1;
   border: 1px solid #f83e01;
   border-radius: 3px;
 }
 
 .swiper-pagination {
-  display: none;
+  /* display: none; */
+}
+
+.cover {
+  background-image: url('../../../../public/assets/img/noBookCoverFont.png');
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1080px) {
+  .big-swiper {
+    width: 136px;
+    height: 238px;
+  }
+
+  .mini-swiper {
+    height: 24px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .mini-slider__img {
-    display: none;
+  .swiper-slide img {
+    height: 198px;
+    border-radius: 10px;
   }
 
-  .mySwiper {
+  .mini-swiper {
+    display: none !important;
+  }
+
+  .mini-slider__img {
     display: none;
   }
 
@@ -85,7 +96,18 @@ body {
 }
 
 @media screen and (max-width: 760px) {
-  .swiper {
+  .big-swiper {
     border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .big-swiper {
+    width: 188px;
+    height: 300px;
+  }
+
+  .swiper-slide img {
+    height: 260px;
   }
 }

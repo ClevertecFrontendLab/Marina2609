@@ -1,44 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
+import { Loader } from '../../app/components/loader/loader';
+import { ErrorMessage } from '../../app/components/messages/error-message/error-message';
 import { Rating } from '../../app/components/rating/rating';
 import { Slider } from '../../app/components/slider/slider';
-import { getBook, getCategorie } from '../../redux/actions/actions';
+import { getBook } from '../../redux/actions/actions';
 
 import './book-page.css';
 
-export const BookPage = () => {
+export const BookPage = (props) => {
   const { id } = useParams();
   const [arrow, setArrow] = useState('down');
   const [isReviewOpen, toggleReview] = useState(true);
   const book = useSelector((state) => state.reducer.book);
   const isLoading = useSelector((state) => state.reducer.isLoading);
   const error = useSelector((state) => state.reducer.error);
-  const categorie = useSelector((state) => state.reducer.categorie);
   const categories = useSelector((state) => state.reducer.categories);
   const dispatch = useDispatch();
-  const location = useLocation();
-  let currentLink = '';
-  const valueCategorie = categories.filter((e) => e.name.includes(categorie));
   const [categorieValue, setCategorieValue] = useState('');
 
-  useEffect(() => {
-    valueCategorie.map((elem) => setCategorieValue(elem.path));
-  }, [valueCategorie]);
-
-  const crumbs = location.pathname
-    .split('/')
-    .filter((cramb) => cramb !== '')
-    .map((cramb) => {
-      currentLink += `/${cramb}`;
-
-      return (
-        <div className='cramb' key={cramb}>
-          <NavLink to={currentLink}>{categorie}</NavLink>
-        </div>
-      );
-    });
+  const { category } = useParams();
 
   const toggleReviewMode = () => {
     if (arrow === 'up') {
@@ -49,35 +32,37 @@ export const BookPage = () => {
     toggleReview(!isReviewOpen);
   };
 
-  const closeError = () => {
-    dispatch(getBook(false));
-  };
-
   useEffect(() => {
     dispatch(getBook(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (category === 'all') {
+      setCategorieValue('Все книги');
+    } else {
+      const arr = categories.filter((e) => e.path.includes(category));
+
+      arr.map((el) => setCategorieValue(el.name));
+    }
+  }, [categories, category]);
 
   return (
     <section className='book-page'>
       <div className='navigation-menu'>
         <div className='book-title'>
-          {crumbs[1]}
-          <div />
-          <div className='crambs'> {book.title}</div>
+          <NavLink data-test-id='breadcrumbs-link' to={props.isBurger ? `/${category}` : `/books/${category}`}>
+            {categorieValue}
+          </NavLink>
+          <div className='slash' />
+          <div className='crambs' data-test-id='book-name'>
+            {book.title}
+          </div>
         </div>
       </div>
       {isLoading ? (
-        <div className='loader-container' data-test-id='loader'>
-          <div className='loader' />
-        </div>
+        <Loader />
       ) : error ? (
-        <div className='error-container' data-test-id='error'>
-          <div className='error-content'>
-            <div className='warning' />
-            <h3 className='error-message'>Что-то пошло не так. Обновите страницу через некоторое время.</h3>
-            <button type='button' className='close-message' aria-label='button' onClick={closeError} />
-          </div>
-        </div>
+        <ErrorMessage />
       ) : (
         book && (
           <div className='book-container'>
@@ -87,7 +72,9 @@ export const BookPage = () => {
               </div>
 
               <div className='col-span-2 book-description'>
-                <div className='title'>{book.title}</div>
+                <div className='title' data-test-id='book-title'>
+                  {book.title}
+                </div>
                 <div className='autor'>
                   {book.authors}, {book.issueYear}
                 </div>

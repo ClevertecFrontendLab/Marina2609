@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
+
+import { getSearch, getSearchValue } from '../../../redux/actions/actions';
 
 import './search.css';
 
-export const Search = () => {
+export const Search = (props) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [filteredList, setFilteredList] = useState();
+  const books = useSelector((state) => state.reducer.books);
+  const dispatch = useDispatch();
 
   const toggleSearchOpen = () => {
     setIsVisible(true);
@@ -12,22 +19,71 @@ export const Search = () => {
 
   const toggleSearchClose = () => {
     setIsVisible(false);
+    setIsFocused(false);
   };
 
+  const focused = () => {
+    // onFocus={focused}
+    console.log(filteredList);
+
+    setIsFocused(true);
+
+    if (filteredList === books) {
+      setIsFocused(false);
+    } else {
+      setIsFocused(true);
+    }
+  };
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+
+    let updatedList = [...props.books];
+
+    updatedList = updatedList.filter((item) => item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+
+    setFilteredList(updatedList);
+    dispatch(getSearchValue(query));
+  };
+
+  useEffect(() => {
+    dispatch(getSearch(filteredList));
+  }, [dispatch, filteredList]);
+
+  useEffect(() => {
+    setIsFocused(true);
+
+    if (!filteredList) {
+      setIsFocused(false);
+    } else if (filteredList.length === books.length) {
+      setIsFocused(false);
+    } else {
+      setIsFocused(true);
+    }
+  }, [books, filteredList]);
+
   return (
-    <div className={classNames('search-container', { 'hide-search': isVisible })}>
-      {!isVisible && (
-        <div className='search-icon' aria-hidden={true} data-test-id='button-search-open' onClick={toggleSearchOpen} />
-      )}
+    <div className={classNames('search', { search__hide: isVisible })}>
+      <div
+        className={classNames(isFocused ? 'search__icon search__icon_active' : 'search__icon', {
+          search__icon_hide: isVisible,
+        })}
+        aria-hidden={true}
+        data-test-id='button-search-open'
+        onClick={toggleSearchOpen}
+      />
 
       <input
-        data-test-id='input-search'
         type='text'
-        className={isVisible ? 'visible-search' : 'search'}
+        className={isVisible ? 'search__input_visible' : 'search__input'}
         placeholder='Поиск книги или автора…'
+        onChange={filterBySearch}
+        data-test-id='input-search'
+        onClick={toggleSearchOpen}
+        onFocus={() => setIsFocused(true)}
       />
       <div
-        className={isVisible ? classNames('close-icon', { '': isVisible }) : ''}
+        className={isVisible ? classNames('search__close', { '': isVisible }) : ''}
         aria-hidden={true}
         data-test-id='button-search-close'
         onClick={toggleSearchClose}

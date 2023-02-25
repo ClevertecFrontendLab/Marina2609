@@ -1,6 +1,17 @@
 import axios from 'axios';
 
-import { CATEGORIE, ERROR, FAILED, GET_BOOK_BY_ID, GET_BOOKS, GET_CATEGORIES, REQUEST } from './actions-types';
+import {
+  CATEGORIE,
+  ERROR,
+  FAILED,
+  FILTER,
+  GET_BOOK_BY_ID,
+  GET_BOOKS,
+  GET_CATEGORIES,
+  REQUEST,
+  SEARCH,
+  SEARCH_VALUE,
+} from './actions-types';
 
 export const fetchBooksRequest = () => ({
   type: REQUEST,
@@ -43,6 +54,21 @@ export const fetchBooksFailure = (error) => ({
 export const fetchCategoriesFailure = (error) => ({
   type: FAILED,
   payload: error,
+});
+
+export const fetchSearch = (search) => ({
+  type: SEARCH,
+  payload: search,
+});
+
+export const fetchSearchValue = (value) => ({
+  type: SEARCH_VALUE,
+  payload: value,
+});
+
+export const fetchFilter = (filter) => ({
+  type: FILTER,
+  payload: filter,
 });
 
 export const getBooks = () => (dispatch) => {
@@ -96,4 +122,16 @@ export const getError = (error) => async (dispatch) => {
 
 export const getCategorie = (categorie) => async (dispatch) => {
   dispatch(fetchCategorie(categorie));
+};
+
+export const getSearch = (search) => async (dispatch) => {
+  dispatch(fetchSearch(search));
+};
+
+export const getSearchValue = (value) => async (dispatch) => {
+  dispatch(fetchSearchValue(value));
+};
+
+export const getFilter = (filter) => async (dispatch) => {
+  dispatch(fetchFilter(filter));
 };

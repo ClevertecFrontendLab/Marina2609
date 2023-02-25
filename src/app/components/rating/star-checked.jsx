@@ -1,1 +1,1 @@
-export const StarChecked = () => <div className='star checked' />;
+export const StarChecked = () => <div className='star star__checked' />;
