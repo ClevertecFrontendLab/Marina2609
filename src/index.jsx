@@ -21,21 +21,18 @@ root.render(
   <HashRouter>
     <Provider store={store}>
       <Routes>
-        <Route path='/auth' element={<SingIn />} />
-        <Route path='/registration' element={<SingUp />} />
-        <Route path='/forgot-pass' element={<Recovery />} />
-
-        <Route path='/' element={<PrivateRoute />}>
+        <Route path='/' element={<AppLayout />}>
+          <Route path='/' element={<Navigate to='books/all' />} />
           <Route path='books/:category' element={<MainPage />} />
           <Route path='books/:category/:id' element={<BookPage />} />
 
           <Route path='rule' element={<RulePage />} />
           <Route path='document' element={<DocumentPage />} />
         </Route>
-
-        <Route path='/account' element={<MainPage />} />
-
-        {/* <Route path='*' element={<Error />} /> */}
+        <Route path='/books' element={<BookLayout />}>
+          <Route path='all/:id' element={<BookPage />} />
+        </Route>
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </Provider>
   </HashRouter>
