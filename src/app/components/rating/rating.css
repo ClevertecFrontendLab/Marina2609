@@ -1,4 +1,22 @@
 .stars {
   display: flex;
   gap: 10px;
+  padding: 2px 0 0 2px;
+}
+
+.star {
+  width: 20px;
+  height: 19px;
+}
+
+.star__checked {
+  background-image: url(../../../../public/assets/img/star-checked.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.star__unchecked {
+  background-image: url(../../../../public/assets/img/star-unchecked.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }

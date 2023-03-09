@@ -8,9 +8,9 @@ export const Rating = (props) => {
 
   for (let i = 0; i < 5; i++) {
     if (i < props.rating) {
-      stars.push(<StarChecked />);
+      stars.push(<StarChecked key={i} />);
     } else {
-      stars.push(<StarUnchecked />);
+      stars.push(<StarUnchecked key={i} />);
     }
   }
 
