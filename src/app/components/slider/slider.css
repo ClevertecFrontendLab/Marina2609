@@ -45,23 +45,7 @@
 }
 
 .swiper-pagination {
-  /* display: none; */
-}
-
-.cover {
-  background-image: url('../../../../public/assets/img/noBookCoverFont.png');
-  background-repeat: no-repeat;
-}
-
-@media screen and (max-width: 1080px) {
-  .big-swiper {
-    width: 136px;
-    height: 238px;
-  }
-
-  .mini-swiper {
-    height: 24px;
-  }
+  display: none;
 }
 
 .cover {
