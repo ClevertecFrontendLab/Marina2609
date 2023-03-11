@@ -4,7 +4,8 @@
 }
 
 .registration__logo {
-  margin: 180px auto 59px;
+  /* margin: 180px auto 59px; */
+  padding: 180px 0 59px;
   text-align: center;
   font-weight: 700;
   font-size: 32px;
@@ -67,16 +68,23 @@
   padding: 0 12px;
 }
 
+.registration__reminder_hint {
+  color: rgb(167, 167, 167);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  padding: 0 12px;
+}
+
 /* text field */
 
-.registration__label_login,
-.registration__label_password {
+.registration__label {
   display: block;
   margin-bottom: 0.25rem;
 }
 
-.registration__input_login,
-.registration__input_password {
+.registration__input {
   display: block;
   width: 100%;
   height: calc(2.25rem + 2px);
@@ -96,25 +104,19 @@
   appearance: none;
 }
 
-.registration__input_login[type='search']::-webkit-search-decoration,
-.registration__input_login[type='search']::-webkit-search-cancel-button,
-.registration__input_login[type='search']::-webkit-search-results-button,
-.registration__input_login[type='search']::-webkit-search-results-decoration,
-.registration__input_password[type='search']::-webkit-search-decoration,
-.registration__input_password[type='search']::-webkit-search-cancel-button,
-.registration__input_password[type='search']::-webkit-search-results-button,
-.registration__input_password[type='search']::-webkit-search-results-decoration {
+.registration__input[type='search']::-webkit-search-decoration,
+.registration__input[type='search']::-webkit-search-cancel-button,
+.registration__input[type='search']::-webkit-search-results-button,
+.registration__input[type='search']::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
-.registration__input_login::placeholder,
-.registration__input_password::placeholder {
+.registration__input::placeholder {
   color: #363636;
   opacity: 0.4;
 }
 
-.registration__input_login:focus,
-.registration__input_password:focus {
+.registration__input:focus {
   color: #363636;
   background-color: #f9f9fa;
   border-color: #bdbdbd;
@@ -122,10 +124,8 @@
   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
 }
 
-.registration__input_login:disabled,
-.registration__input_login[readonly],
-.registration__input_password:disabled,
-.registration__input_password[readonly] {
+.registration__input:disabled,
+.registration__input[readonly] {
   background-color: #f9f9fa;
   opacity: 1;
 }
@@ -134,8 +134,7 @@
   position: relative;
 }
 
-.text-field_floating-3 .registration__input_login,
-.text-field_floating-3 .registration__input_password {
+.text-field_floating-3 .registration__input {
   border: none;
   border-bottom: 1px solid #bfc4c9;
   border-radius: 0;
@@ -148,16 +147,14 @@
   width: 100%;
 }
 
-.text-field_floating-3 .registration__input_login:focus,
-.text-field_floating-3 .registration__input_password:focus {
+.text-field_floating-3 .registration__input:focus {
   outline: 0;
   border-bottom: 1px solid #bfc4c9;
   box-shadow: none;
   background-color: #f9f9fa;
 }
 
-.text-field_floating-3 .registration__label_login,
-.text-field_floating-3 .registration__label_password {
+.text-field_floating-3 .registration__label {
   position: absolute;
   top: 0;
   left: 0;
@@ -169,29 +166,23 @@
   transition: color 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 
-.text-field_floating-3 .registration__input_login::-moz-placeholder,
-.text-field_floating-3 .registration__input_password::-moz-placeholder {
+.text-field_floating-3 .registration__input::-moz-placeholder {
   color: transparent;
 }
 
-.text-field_floating-3 .registration__input_login::placeholder,
-.text-field_floating-3 .registration__input_password::placeholder {
+.text-field_floating-3 .registration__input::placeholder {
   color: transparent;
 }
 
-.text-field_floating-3 .registration__input_login:focus,
-.text-field_floating-3 .registration__input_login:not(:placeholder-shown),
-.text-field_floating-3 .registration__input_password:focus,
-.text-field_floating-3 .registration__input_password:not(:placeholder-shown) {
+.text-field_floating-3 .registration__input:focus,
+.text-field_floating-3 .registration__input:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
   border-bottom: 1px solid #bfc4c9;
 }
 
-.text-field_floating-3 .registration__input_login:focus ~ .registration__label_login,
-.text-field_floating-3 .registration__input_login:not(:placeholder-shown) ~ .registration__label_login,
-.text-field_floating-3 .registration__input_password:focus ~ .registration__label_password,
-.text-field_floating-3 .registration__input_password:not(:placeholder-shown) ~ .registration__label_password {
+.text-field_floating-3 .registration__input:focus ~ .registration__label,
+.text-field_floating-3 .registration__input:not(:placeholder-shown) ~ .registration__label {
   transform: scale(0.85) translateY(-0.75rem) translateX(0.15rem);
   color: #a7a7a7;
 }
@@ -251,6 +242,7 @@
   letter-spacing: 0.2px;
   color: #a7a7a7;
   padding-left: 12px;
+  display: flex;
 }
 
 .registration__button {
@@ -305,6 +297,14 @@
   background-image: url(../../../public/assets/img/arrowRigth.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.registration__form > .eye {
+  margin-top: 18px;
+}
+
+.registration__form2 > .eye {
+  margin-top: 36px;
 }
 
 @media screen and (max-width: 640px) {

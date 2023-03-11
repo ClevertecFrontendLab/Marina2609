@@ -75,12 +75,6 @@ a:visited {}
   padding: 16px 1px 0 24px;
 }
 
-.hide {
-  /* overflow: hidden; */
-  visibility: hidden;
-  height: 0;
-}
-
 .nav__item {
   display: block;
 }

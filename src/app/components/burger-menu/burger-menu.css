@@ -79,6 +79,11 @@
   border: 1px solid #bfc4c9;
 }
 
+.hide {
+  /* visibility: hidden; */
+  left: -100% !important;
+}
+
 .active {
   color: #f85907;
   font-weight: 700;

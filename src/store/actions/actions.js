@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { axiosInstance, baseUrl } from '../../api/api';
-import { fetchMessage } from '../reducers/message-reducer';
+import { fetchMessage, fetchMessage2 } from '../reducers/message-reducer';
 import {
   fetchBooksFailure,
   fetchBooksRequest,
@@ -79,6 +79,10 @@ export const getFilter = (filter) => async (dispatch) => {
 
 export const getMessage = (message) => async (dispatch) => {
   dispatch(fetchMessage(message));
+};
+
+export const getMessage2 = (message2) => async (dispatch) => {
+  dispatch(fetchMessage2(message2));
 };
 
 export const fetchRegister = (email, username, password, fname, lName, mobile) => (dispatch) => {

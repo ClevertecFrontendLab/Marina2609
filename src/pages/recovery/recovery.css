@@ -215,7 +215,7 @@
   color: #a7a7a7;
 }
 
-.authentication__arrow {
+.auth__arrow {
   margin-right: 15px;
   width: 18px;
   background-image: url(../../../public/assets/img/arrowLeft.svg);

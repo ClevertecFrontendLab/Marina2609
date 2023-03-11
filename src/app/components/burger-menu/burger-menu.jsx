@@ -25,16 +25,12 @@ export const BurgerMenu = () => {
     <div className='burger-menu' data-test-id='button-burger'>
       <button
         type='button'
-        className={classNames('burger-menu__button', { visible: isMenuOpen })}
+        className={classNames('burger-menu__button', { visible: !isMenuOpen })}
         onClick={toggleMenuMode}
       >
         <span className='burger-menu__lines' />
       </button>
-      <div
-        aria-hidden={true}
-        className={classNames('burger-menu__nav', { hide: !isMenuOpen })}
-        onClick={toggleMenuMode}
-      >
+      <div aria-hidden={true} className={classNames('burger-menu__nav', { hide: isMenuOpen })} onClick={toggleMenuMode}>
         <div className='burger-menu__content'>
           <Aside isBurger={isBurger} />
         </div>

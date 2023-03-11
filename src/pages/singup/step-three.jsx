@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import MaskedInput from 'react-text-mask';
 import classNames from 'classnames';
 
 import { Loader } from '../../app/components/loader/loader';
@@ -10,9 +9,7 @@ import { CannotBeEmpty, CannotBeEmpty2 } from '../../app/components/messages/can
 import { getMessage, getMessage2 } from '../../store/actions/actions';
 import { fetchRegistr } from '../../store/actions/registr-actions';
 
-import './singup.css';
-
-export const SingUp = () => {
+export const StepThree = () => {
   const [step, setStep] = useState(1);
   const [error, setError] = useState(0);
   const [isToggleEye, setIsToggleEye] = useState(false);
@@ -95,12 +92,12 @@ export const SingUp = () => {
       setPasswordError('');
     } else if (/^(?=.*[A-Z])(?=.*?[A-ZА-Я])(?=.*?[a-zа-я])(?=.*?[0-9]).{8,}$/.test(data)) {
       setPasswordError('');
-      setIsCheck(false);
-      setIsValid(true);
+    } else if (/[A-Z]/.test(data)) {
+      dispatch(getMessage2('Пароль не менее 8 символов, с заглавной буквой и цифрой'));
+      setPasswordError(<CannotBeEmpty2 />);
     } else {
       dispatch(getMessage2('Пароль не менее 8 символов, с заглавной буквой и цифрой'));
       setPasswordError(<CannotBeEmpty2 />);
-      setIsCheck(false);
     }
   };
 
@@ -108,78 +105,24 @@ export const SingUp = () => {
     if (data.length === 0) {
       dispatch(getMessage2('Поле не может быть пустым'));
       setPasswordError(<CannotBeEmpty2 />);
-      setIsCheck(false);
     } else if (/^(?=.*[A-Z])(?=.*?[A-ZА-Я])(?=.*?[a-zа-я])(?=.*?[0-9]).{8,}$/.test(data)) {
+      dispatch(getMessage2('Пароль не менее 8 символов, с заглавной буквой и цифрой'));
+      setPasswordError(<CannotBeEmpty2 />);
+    } else {
       setPasswordError('');
       setIsCheck(true);
       setIsValid(true);
-    } else if (/[A-Z]/.test(data)) {
-      setPasswordError('');
-      setIsCheck(false);
-    } else {
-      dispatch(getMessage2('Пароль не менее 8 символов, с заглавной буквой и цифрой'));
-      setPasswordError(<CannotBeEmpty2 />);
-      setIsCheck(false);
-    }
-  };
-
-  const validateFirstName = (data) => {
-    if (data.trim()) {
-      setFirstNameError('');
-      setFirstName(data);
-    } else {
-      dispatch(getMessage('Поле не может быть пустым'));
-      setFirstNameError(<CannotBeEmpty />);
-    }
-  };
-
-  const validateLastName = (data) => {
-    if (data.trim()) {
-      setLastNameError('');
-      setLastName(data);
-    } else {
-      dispatch(getMessage2('Поле не может быть пустым'));
-      setLastNameError(<CannotBeEmpty2 />);
-    }
-  };
-
-  const validatePhone = (data) => {
-    if (data.trim()) {
-      setPhoneError('');
-      setPhone(data);
-    } else {
-      dispatch(getMessage('Поле не может быть пустым'));
-      setPhoneError(<CannotBeEmpty />);
-    }
-
-    if (data.includes('x')) {
-      dispatch(getMessage('В формате +375 (xx) xxx-xx-xx'));
-      setPhoneError(<CannotBeEmpty />);
-    }
-  };
-
-  const validateEmail = (data) => {
-    if (!/([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/.test(data)) {
-      dispatch(getMessage2('Введите корректный e-mail'));
-      setEmailError(<CannotBeEmpty2 />);
-    }
-  };
-
-  const checkEmail = (data) => {
-    if (data.trim()) {
-      validateEmail(data);
-    } else {
-      dispatch(getMessage2('Поле не может быть пустым'));
-      setEmailError(<CannotBeEmpty2 />);
     }
   };
 
   const onSubmit = () => {
     // dispatch(fetchRegister(email, username, password, fname, lName, mobile));
+    // '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$'
+    // shouldBlurUserName();
+    // shouldBlurPassword();
 
-    if ((isValid && step < 3) || (lastName && firstName && step < 3)) {
+    if (isValid && step < 3) {
       setStep(step + 1);
-      setIsValid(false);
     }
   };
 
@@ -268,8 +211,7 @@ export const SingUp = () => {
                 <span> Пароль не менее 8 символов, с заглавной буквой и цифрой</span>
               </div>
             )}
-
-            <button type='submit' className='registration__button' disabled={isValid ? false : true}>
+            <button type='submit' className='registration__button' disabled={!isValid && 'disabled'}>
               следующий шаг
             </button>
           </form>
@@ -286,11 +228,9 @@ export const SingUp = () => {
                 id='firstName'
                 name='firstName'
                 placeholder='Имя'
-                {...register('firstName', {
-                  required: true,
-                  onChange: (e) => validateFirstName(e.target.value),
-                  onBlur: (e) => validateFirstName(e.target.value),
-                })}
+                {...register('firstName')}
+                onChange={(e) => setUserName(e.target.value)}
+                // onBlur={shouldBlurLogin}
                 className={classNames('registration__input', {
                   registration__error: firstNameError,
                 })}
@@ -308,11 +248,9 @@ export const SingUp = () => {
                 id='lastName'
                 name='lastName'
                 placeholder='Фамилия'
-                {...register('lastName', {
-                  required: true,
-                  onBlur: (e) => validateLastName(e.target.value),
-                  onChange: (e) => validateLastName(e.target.value),
-                })}
+                {...register('lastName')}
+                onChange={(e) => setUserName(e.target.value)}
+                // onBlur={shouldBlurPassword}
                 className={classNames('registration__input', {
                   registration__error: lastNameError,
                 })}
@@ -324,7 +262,7 @@ export const SingUp = () => {
 
             {lastNameError}
 
-            <button type='submit' className='registration__button' disabled={lastName && firstName ? false : true}>
+            <button type='submit' className='registration__button'>
               последний шаг
             </button>
           </form>
@@ -332,24 +270,20 @@ export const SingUp = () => {
         {step === 3 && (
           <form onSubmit={handleSubmit(onSubmit)} data-test-id='register-form' className='registration__form'>
             <div className='text-field text-field_floating-3'>
-              <MaskedInput
-                type='tel'
+              <input
+                type='text'
                 id='phone'
                 name='phone'
-                placeholderChar='x'
-                mask={['+375', '(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
-                showMask={false}
-                {...register('phone', {
-                  required: true,
-                  onChange: (e) => validatePhone(e.target.value),
-                  onBlur: (e) => validatePhone(e.target.value),
-                })}
+                placeholder='Номер телефона'
+                {...register('phone')}
+                onChange={(e) => setPhone(e.target.value)}
+                // onBlur={shouldBlurLogin}
                 className={classNames('registration__input', {
                   registration__error: phoneError,
                 })}
               />
               <label className='registration__label' htmlFor='phone'>
-                Номер телефона
+                Имя
               </label>
             </div>
 
@@ -361,23 +295,21 @@ export const SingUp = () => {
                 id='email'
                 name='email'
                 placeholder='E-mail'
-                {...register('email', {
-                  required: true,
-                  onChange: (e) => checkEmail(e.target.value),
-                  onBlur: (e) => checkEmail(e.target.value),
-                })}
+                {...register('email')}
+                onChange={(e) => setUserName(e.target.value)}
+                // onBlur={shouldBlurPassword}
                 className={classNames('registration__input', {
                   registration__error: emailError,
                 })}
               />
               <label className='registration__label' htmlFor='email'>
-                E-mail
+                Фамилия
               </label>
             </div>
 
             {emailError}
 
-            <button type='submit' className='registration__button' disabled={isValid ? false : true}>
+            <button type='submit' className='registration__button'>
               зарегистрироваться
             </button>
           </form>
