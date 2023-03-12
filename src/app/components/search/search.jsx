@@ -22,19 +22,6 @@ export const Search = (props) => {
     setIsFocused(false);
   };
 
-  const focused = () => {
-    // onFocus={focused}
-    console.log(filteredList);
-
-    setIsFocused(true);
-
-    if (filteredList === books) {
-      setIsFocused(false);
-    } else {
-      setIsFocused(true);
-    }
-  };
-
   const filterBySearch = (event) => {
     const query = event.target.value;
 

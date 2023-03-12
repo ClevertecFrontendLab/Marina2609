@@ -16,7 +16,6 @@
 .recovery__window {
   max-width: 528px;
   width: 100%;
-  /* padding: 23px 56px 48px; */
   background: #ffffff;
   border-radius: 16px;
   margin: 0 auto;
@@ -109,8 +108,6 @@
   text-transform: uppercase;
   color: #363636;
 }
-
-/* text field */
 
 .recovery__input_login {
   display: block;

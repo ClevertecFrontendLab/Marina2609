@@ -14,7 +14,6 @@ aside {
 }
 
 .nav__none {
-  /* display: none; */
   visibility: hidden;
   height: 0;
 }
@@ -36,16 +35,6 @@ aside {
 .navItemActive {
   visibility: visible;
 }
-
-/* a {
-  
-}
-
-a:hover {
-} 
-
-a:visited {}
-*/
 
 .nav__link-active {
   color: #f85907;
@@ -85,7 +74,6 @@ a:visited {}
   line-height: 24px;
   letter-spacing: 0.1px;
   color: #a7a7a7;
-  /* padding-left: 3px; */
 }
 
 .arrow {
@@ -111,8 +99,6 @@ a:visited {}
 @media screen and (max-width: 1264px) {
   .wrapper aside {
     display: none;
-    /* overflow: hidden;
-    height: 0; */
   }
 
   #aside-container {

@@ -231,13 +231,10 @@ article {
   }
 
   element.style {
-    /* position: relative; */
     position: unset;
   }
 
   .list-reserve {
-    /* position: unset; */
-    /* margin-bottom: 14px; */
     width: 186px;
     right: 16px;
   }
@@ -246,8 +243,4 @@ article {
     gap: 8px;
     padding: 16px 0 0 8px;
   }
-  /* 
-  .list-rating {
-    bottom: 79px;
-  } */
 }

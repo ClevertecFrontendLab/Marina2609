@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import { Loader } from '../../app/components/loader/loader';
 import { CannotBeEmpty } from '../../app/components/messages/cannot-be-empty/cannot-be-empty';
+import { patternEmail } from '../../app/constants';
 import { getMessage } from '../../store/actions/actions';
 import { fetchRecovery } from '../../store/actions/recovery-actions';
 import { ResetPassword } from '../reset-password/reset-password';
@@ -18,16 +19,8 @@ export const Recovery = () => {
   const recoveryError = useSelector((state) => state.recovery.recoveryError);
   const [sendEmailSuccess, setSendEmailSuccess] = useState(recovery);
   const [searchParams] = useSearchParams();
-  const token = localStorage.getItem('token');
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (token) {
-      navigate('/books/all');
-    }
-  }, [navigate, token]);
 
   useEffect(() => {
     if (searchParams.get('code')) {
@@ -51,7 +44,7 @@ export const Recovery = () => {
   };
 
   const validateEmail = (data) => {
-    if (!/([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/.test(data)) {
+    if (!patternEmail.test(data)) {
       dispatch(getMessage('Введите корректный e-mail'));
       setEmailError(<CannotBeEmpty />);
     }

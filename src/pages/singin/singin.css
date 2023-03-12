@@ -72,7 +72,6 @@
 .repeat__button {
   max-width: 416px;
   width: 100%;
-  /* margin: 32px 0 19px; */
   height: 52px;
   background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
   border-radius: 30px;
@@ -122,8 +121,6 @@
   letter-spacing: 0.2px;
   padding: 0 12px;
 }
-
-/* text field */
 
 .authentication__label_login,
 .authentication__label_password {
@@ -257,12 +254,6 @@
   padding-bottom: 0.625rem;
   border-bottom: 1px solid #f42c4f;
 }
-/* 
-.text-field_floating-3 .authentication__error:focus {
-  padding-top: 1.625rem;
-  padding-bottom: 0.625rem;
-  border-bottom: 1px solid #bfc4c9;
-} */
 
 .eye {
   position: relative;

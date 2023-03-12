@@ -8,6 +8,15 @@ import classNames from 'classnames';
 
 import { Loader } from '../../app/components/loader/loader';
 import { CannotBeEmpty, CannotBeEmpty2 } from '../../app/components/messages/cannot-be-empty/cannot-be-empty';
+import {
+  pattern,
+  patternEmail,
+  patternLetters,
+  patternLettersNumber,
+  patternLogin,
+  patternNumber,
+  patternPassword,
+} from '../../app/constants';
 import { getMessage, getMessage2 } from '../../store/actions/actions';
 import { fetchRegistr } from '../../store/actions/registr-actions';
 
@@ -42,16 +51,9 @@ export const SingUp = () => {
   const isRegistr = useSelector((state) => state.registr.isRegistr);
   const registr = useSelector((state) => state.registr.registr);
   const registerError = useSelector((state) => state.registr.registerError);
-  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-
-  useEffect(() => {
-    if (token) {
-      navigate('/books/all');
-    }
-  }, [navigate, token]);
 
   useEffect(() => {
     if (isRegistr) {
@@ -60,15 +62,12 @@ export const SingUp = () => {
   }, [isRegistr]);
 
   const shouldUserName = (data) => {
-    const patternLogin = new RegExp(/[A-Za-z0-9]/);
-    const pattern = new RegExp(/[0-9]/);
-
     if (data.length === 0) {
       setUserNameError('');
     } else if (!patternLogin.test(data)) {
       dispatch(getMessage('Используйте для логина латинский алфавит и цифры'));
       setUserNameError(<CannotBeEmpty />);
-    } else if (pattern.test(data)) {
+    } else if (patternNumber.test(data)) {
       setUserNameError('');
     } else {
       dispatch(getMessage('Используйте для логина латинский алфавит и цифры'));
@@ -82,10 +81,10 @@ export const SingUp = () => {
     if (data.length === 0) {
       dispatch(getMessage('Поле не может быть пустым'));
       setUserNameError(<CannotBeEmpty />);
-    } else if (!/[A-Za-z][0-9]/.test(data)) {
+    } else if (!patternLettersNumber.test(data)) {
       dispatch(getMessage('Используйте для логина латинский алфавит и цифры'));
       setUserNameError(<CannotBeEmpty />);
-    } else if (/[0-9]/.test(data)) {
+    } else if (patternNumber.test(data)) {
       setUserNameError('');
     } else {
       dispatch(getMessage('Используйте для логина латинский алфавит и цифры'));
@@ -143,7 +142,7 @@ export const SingUp = () => {
       }));
     }
 
-    if (/\d+/.test(data)) {
+    if (pattern.test(data)) {
       setPasswordError((passwordError) => ({
         ...passwordError,
         numbers: false,
@@ -155,7 +154,7 @@ export const SingUp = () => {
       }));
     }
 
-    if (/[A-Z]/g.test(data)) {
+    if (patternLetters.test(data)) {
       setPasswordError((passwordError) => ({
         ...passwordError,
         letters: false,
@@ -167,7 +166,7 @@ export const SingUp = () => {
       }));
     }
 
-    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(data)) {
+    if (patternPassword.test(data)) {
       setPasswordError({
         letters: false,
         numbers: false,
@@ -221,7 +220,7 @@ export const SingUp = () => {
   };
 
   const validateEmail = (data) => {
-    if (/([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/.test(data)) {
+    if (patternEmail.test(data)) {
       setEmail(data);
     } else {
       dispatch(getMessage2('Введите корректный e-mail'));

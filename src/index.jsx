@@ -13,6 +13,7 @@ import { RulePage } from './pages/rule/rule-page';
 import { SingIn } from './pages/singin/singin';
 import { SingUp } from './pages/singup/singup';
 import { store } from './store/store';
+import { LayoutAuthentication } from './app/layouts/authorization-layout';
 
 import './index.css';
 
@@ -32,13 +33,15 @@ root.render(
             <Route path='/document' element={<DocumentPage />} />
           </Route>
 
-          <Route path='/auth' element={<SingIn />} />
-          <Route path='/registration' element={<SingUp />} />
-          <Route path='/forgot-pass' element={<Recovery />} />
-          <Route path='/reset-pass' element={<ResetPassword />} />
+          <Route element={<LayoutAuthentication />}>
+            <Route path='/' element={<Navigate to='/auth' />} />
+            <Route path='/auth' element={<SingIn />} />
+            <Route path='/registration' element={<SingUp />} />
+            <Route path='/forgot-pass' element={<Recovery />} />
+            <Route path='/reset-pass' element={<ResetPassword />} />
 
-          <Route path='/account' element={<MainPage />} />
-
+            <Route path='/account' element={<MainPage />} />
+          </Route>
           {/* <Route path='*' element={<Error />} /> */}
         </Routes>
       </Provider>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { Footer } from '../../app/components/footer/footer';
 import { Header } from '../../app/components/header/header';
@@ -84,15 +85,9 @@ export const BookPage = (props) => {
                       <div className='autor'>
                         {book.authors}, {book.issueYear}
                       </div>
-                      {book.booking ? (
-                        <button type='button' className='reserve booked'>
-                          Забронирована
-                        </button>
-                      ) : (
-                        <button type='button' className='reserve'>
-                          Забронировать
-                        </button>
-                      )}
+                      <button type='button' className={classNames('reserve', { booked: book.booking })}>
+                        {book.booking ? 'Забронирована' : 'Забронировать'}
+                      </button>
                       {book.delivery && (
                         <button type='button' className=' reserve busy'>
                           Занята до {book.delivery.dateHandedTo}

@@ -4,7 +4,6 @@
 }
 
 .registration__logo {
-  /* margin: 180px auto 59px; */
   padding: 180px 0 59px;
   text-align: center;
   font-weight: 700;
@@ -84,8 +83,6 @@
   line-height: 16px;
   letter-spacing: 0.2px;
 }
-
-/* text field */
 
 .registration__label {
   display: block;

@@ -24,11 +24,6 @@
 .search__icon_active {
   filter: brightness(0.5) sepia(1) hue-rotate(328deg) saturate(6);
 }
-.search__icon-active {
-  /* filter: invert(100%);
-  -webkit-filter: invert(100%); */
-  background-color: aqua;
-}
 
 .search__input {
   font-weight: 400;
@@ -43,10 +38,6 @@
 
 .search__input:focus {
   outline: none;
-}
-
-.search__input:focus + .search__icon {
-  /* стили для иконки при фокусе поля */
 }
 
 .search__close {
@@ -120,9 +111,4 @@
     width: 288px;
     position: absolute;
   }
-
-  /* .search__input {
-    overflow: hidden;
-    height: 0;
-  } */
 }

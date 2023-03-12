@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { axiosInstance, baseUrl } from '../../api/api';
 import { fetchMessage, fetchMessage2 } from '../reducers/message-reducer';
 import {

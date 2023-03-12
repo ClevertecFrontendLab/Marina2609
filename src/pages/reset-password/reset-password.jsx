@@ -2,12 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Loader } from '../../app/components/loader/loader';
-import { CannotBeEmpty, CannotBeEmpty2 } from '../../app/components/messages/cannot-be-empty/cannot-be-empty';
-import { getMessage, getMessage2 } from '../../store/actions/actions';
+import { pattern, patternLetters, patternPassword } from '../../app/constants';
 import { fetchRecovery } from '../../store/actions/recovery-actions';
 
 import './reset-password.css';
@@ -16,7 +14,6 @@ export const ResetPassword = (props) => {
   const [code] = useState(props.code);
   const [isValid, setIsValid] = useState(false);
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [passwordError, setPasswordError] = useState({
     letters: false,
     numbers: false,
@@ -96,7 +93,7 @@ export const ResetPassword = (props) => {
       }));
     }
 
-    if (/\d+/.test(data)) {
+    if (pattern.test(data)) {
       setPasswordError((passwordError) => ({
         ...passwordError,
         numbers: false,
@@ -108,7 +105,7 @@ export const ResetPassword = (props) => {
       }));
     }
 
-    if (/[A-Z]/g.test(data)) {
+    if (patternLetters.test(data)) {
       setPasswordError((passwordError) => ({
         ...passwordError,
         letters: false,
@@ -120,7 +117,7 @@ export const ResetPassword = (props) => {
       }));
     }
 
-    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(data)) {
+    if (patternPassword.test(data)) {
       setPasswordError({
         letters: false,
         numbers: false,
@@ -197,7 +194,7 @@ export const ResetPassword = (props) => {
       }));
     }
 
-    if (/\d+/.test(data)) {
+    if (pattern.test(data)) {
       setPasswordConfirmationError((passwordError) => ({
         ...passwordError,
         numbers: false,
@@ -209,7 +206,7 @@ export const ResetPassword = (props) => {
       }));
     }
 
-    if (/[A-Z]/g.test(data)) {
+    if (patternLetters.test(data)) {
       setPasswordConfirmationError((passwordError) => ({
         ...passwordError,
         letters: false,
@@ -221,7 +218,7 @@ export const ResetPassword = (props) => {
       }));
     }
 
-    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(data)) {
+    if (patternPassword.test(data)) {
       setPasswordConfirmationError({
         letters: false,
         numbers: false,
@@ -229,7 +226,6 @@ export const ResetPassword = (props) => {
         message: 'Пароль не менее 8 символов, с заглавной буквой и цифрой',
       });
       setIsValid(true);
-      setPasswordConfirmation(data);
     } else {
       setPasswordConfirmationError((passwordError) => ({
         ...passwordError,

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { Loader } from '../../app/components/loader/loader';
@@ -135,11 +135,15 @@ export const SingIn = () => {
                   type='img'
                   value=''
                   data-test-id={isShowPassword ? 'eye-opened' : 'eye-closed'}
-                  className={
-                    isShowPassword
-                      ? 'authentication__input_eye authentication__input_eye-opened'
-                      : 'authentication__input_eye authentication__input_eye-closed'
-                  }
+                  className={classNames(
+                    'authentication__input_eye',
+                    {
+                      'authentication__input_eye-opened': isShowPassword,
+                    },
+                    {
+                      'authentication__input_eye-closed': !isShowPassword,
+                    }
+                  )}
                   onClick={() => setIsShowPassword(!isShowPassword)}
                 />
               )}

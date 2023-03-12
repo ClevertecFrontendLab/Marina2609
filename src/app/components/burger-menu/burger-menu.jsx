@@ -49,7 +49,6 @@ export const BurgerMenu = () => {
           </div>
         </div>
       </div>
-      {/* <div className='burger-menu__overlay' aria-hidden={true} onClick={() => toggleMenu(false)} /> */}
     </div>
   );
 };
