@@ -1,21 +1,21 @@
-import { LOGIN_FAILED, LOGIN_REQUEST, REGISTER_SUCCESS } from '../actions/actions-types';
+import { REGISTER_FAILED, REGISTER_REQUEST, REGISTER_SUCCESS } from '../actions/actions-types';
 
 const initialState = {
   isRegistr: false,
-  register: [],
+  registr: [],
   registerError: '',
 };
 
 export const registr = (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOGIN_REQUEST:
+    case REGISTER_REQUEST:
       return { ...state, isRegistr: true, registerError: '' };
 
     case REGISTER_SUCCESS:
-      return { ...state, isRegistr: false, register: payload, registerError: '' };
+      return { ...state, isRegistr: false, registr: payload, registerError: '' };
 
-    case LOGIN_FAILED:
-      return { ...state, isRegistr: false, register: [], registerError: payload };
+    case REGISTER_FAILED:
+      return { ...state, isRegistr: false, registr: [], registerError: payload };
 
     default:
       return state;
@@ -23,15 +23,15 @@ export const registr = (state = initialState, { type, payload }) => {
 };
 
 export const fetchRegistrRequest = () => ({
-  type: LOGIN_REQUEST,
+  type: REGISTER_REQUEST,
 });
 
-export const fetchRegistrSuccess = (register) => ({
+export const fetchRegistrSuccess = (registr) => ({
   type: REGISTER_SUCCESS,
-  payload: register,
+  payload: registr,
 });
 
 export const fetchRegistrFailure = (error) => ({
-  type: LOGIN_FAILED,
+  type: REGISTER_FAILED,
   payload: error,
 });

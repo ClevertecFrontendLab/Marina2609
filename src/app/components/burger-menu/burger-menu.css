@@ -64,7 +64,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 10;
+  z-index: 2;
 }
 
 .burger-menu > .burger-menu__overlay {
@@ -106,7 +106,7 @@
     /* position: fixed; */
     position: absolute;
     top: 0;
-    z-index: 20;
+    z-index: 2;
     display: flex;
     flex-flow: column;
     max-width: 502px;

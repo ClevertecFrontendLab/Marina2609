@@ -8,6 +8,7 @@ import { BookPage } from './pages/book/book-page';
 import { DocumentPage } from './pages/document/document-page';
 import { MainPage } from './pages/main/main-page';
 import { Recovery } from './pages/recovery/recovery';
+import { ResetPassword } from './pages/reset-password/reset-password';
 import { RulePage } from './pages/rule/rule-page';
 import { SingIn } from './pages/singin/singin';
 import { SingUp } from './pages/singup/singup';
@@ -33,6 +34,7 @@ root.render(
         <Route path='/auth' element={<SingIn />} />
         <Route path='/registration' element={<SingUp />} />
         <Route path='/forgot-pass' element={<Recovery />} />
+        <Route path='/reset-pass' element={<ResetPassword />} />
 
         <Route path='/account' element={<MainPage />} />
 

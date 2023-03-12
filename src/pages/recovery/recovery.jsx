@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Loader } from '../../app/components/loader/loader';
 import { CannotBeEmpty } from '../../app/components/messages/cannot-be-empty/cannot-be-empty';
 import { getMessage } from '../../store/actions/actions';
 import { fetchRecovery } from '../../store/actions/recovery-actions';
+import { ResetPassword } from '../reset-password/reset-password';
 
 import './recovery.css';
 
@@ -16,6 +17,8 @@ export const Recovery = () => {
   const recovery = useSelector((state) => state.recovery.recovery);
   const recoveryError = useSelector((state) => state.recovery.recoveryError);
   const token = localStorage.getItem('token');
+  const [sendEmailSuccess, setSendEmailSuccess] = useState(recovery);
+  const [searchParams] = useSearchParams();
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,11 +30,21 @@ export const Recovery = () => {
   }, [navigate, token]);
 
   useEffect(() => {
+    if (searchParams.get('code')) {
+      <ResetPassword />;
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
     if (recoveryError) {
       dispatch(getMessage('error'));
       setEmailError(<CannotBeEmpty />);
     }
   }, [dispatch, recoveryError]);
+
+  useEffect(() => {
+    setSendEmailSuccess(recovery);
+  }, [recovery]);
 
   const onSubmit = (data) => {
     dispatch(fetchRecovery(data.email));
@@ -58,7 +71,9 @@ export const Recovery = () => {
       {isRecovery && <Loader />}
       <div className='recovery__logo'>Cleverland</div>
 
-      {recovery === 200 ? (
+      {searchParams.get('code') ? (
+        <ResetPassword code={searchParams.get('code')} />
+      ) : sendEmailSuccess === 200 ? (
         <div className='authentication__window_error'>
           <div className='authentication__header_error' data-test-id='status-block'>
             Письмо выслано
@@ -87,7 +102,7 @@ export const Recovery = () => {
                 type='text'
                 id='email'
                 name='email'
-                placeholder='Email'
+                placeholder='E-mail'
                 {...register('email', {
                   required: true,
                   onBlur: (e) => checkEmail(e.target.value),
@@ -95,8 +110,8 @@ export const Recovery = () => {
                 })}
                 className='recovery__input_login'
               />
-              <label className='recovery__label_login' htmlFor='login'>
-                Email
+              <label className='recovery__label_login' htmlFor='email'>
+                E-mail
               </label>
             </div>
             {emailError}

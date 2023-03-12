@@ -6,15 +6,12 @@ import {
   GET_BOOK_BY_ID,
   GET_BOOKS,
   GET_CATEGORIES,
-  REGISTER_SUCCESS,
   REQUEST,
   SEARCH,
   SEARCH_VALUE,
 } from '../actions/actions-types';
 
 const initialState = {
-  register: [],
-  registerError: '',
   isLoading: false,
   isLoadCategories: false,
   books: [],
@@ -31,9 +28,6 @@ const initialState = {
 
 export const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case REGISTER_SUCCESS:
-      return { ...state, isRegister: false, register: payload, registerError: '' };
-
     case REQUEST:
       return { ...state, isLoading: true, isLoadCategories: true };
 
@@ -68,11 +62,6 @@ export const reducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
-
-export const fetchRegisterSuccess = (register) => ({
-  type: REGISTER_SUCCESS,
-  payload: register,
-});
 
 export const fetchBooksRequest = () => ({
   type: REQUEST,

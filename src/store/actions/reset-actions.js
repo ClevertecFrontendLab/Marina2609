@@ -1,11 +1,11 @@
 import { axiosInstance, baseUrl } from '../../api/api';
 import { fetchRegistrFailure, fetchRegistrRequest, fetchRegistrSuccess } from '../reducers/registr-reducer';
 
-export const fetchRegistr = (email, username, password, firstName, lastName, phone) => (dispatch) => {
+export const fetchReset = (password, passwordConfirmation, code) => (dispatch) => {
   dispatch(fetchRegistrRequest(true));
 
   axiosInstance
-    .post(`${baseUrl}/api/auth/local/register`, { email, username, password, firstName, lastName, phone })
+    .post(`${baseUrl}/api/auth/reset-password`, { password, passwordConfirmation, code })
     .then((response) => {
       dispatch(fetchRegistrSuccess(response.status));
     })

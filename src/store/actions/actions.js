@@ -13,7 +13,6 @@ import {
   fetchCategoriesSuccess,
   fetchError,
   fetchFilter,
-  fetchRegisterSuccess,
   fetchSearch,
   fetchSearchValue,
 } from '../reducers/reducer';
@@ -83,18 +82,4 @@ export const getMessage = (message) => async (dispatch) => {
 
 export const getMessage2 = (message2) => async (dispatch) => {
   dispatch(fetchMessage2(message2));
-};
-
-export const fetchRegister = (email, username, password, fname, lName, mobile) => (dispatch) => {
-  axiosInstance
-    .post('https://strapi.cleverland.by/api/auth/local/register', { email, username, password, fname, lName, mobile })
-    .then((response) => {
-      localStorage.setItem('token', response.data.jwt);
-      localStorage.setItem('user', response.data.user.firstName);
-
-      dispatch(fetchRegisterSuccess(response.data.jwt));
-    })
-    .catch((error) => {
-      'something went wrong';
-    });
 };
