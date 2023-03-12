@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { getSearch, getSearchValue } from '../../../redux/actions/actions';
+import { getSearch, getSearchValue } from '../../../store/actions/actions';
 
 import './search.css';
 
@@ -20,19 +20,6 @@ export const Search = (props) => {
   const toggleSearchClose = () => {
     setIsVisible(false);
     setIsFocused(false);
-  };
-
-  const focused = () => {
-    // onFocus={focused}
-    console.log(filteredList);
-
-    setIsFocused(true);
-
-    if (filteredList === books) {
-      setIsFocused(false);
-    } else {
-      setIsFocused(true);
-    }
   };
 
   const filterBySearch = (event) => {

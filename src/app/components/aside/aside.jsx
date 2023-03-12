@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { getFilter } from '../../../redux/actions/actions';
+import { getFilter } from '../../../store/actions/actions';
 
 import './aside.css';
 
@@ -16,6 +16,8 @@ export const Aside = (props) => {
   const books = useSelector((state) => state.reducer.books);
   const [count, setCount] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {}, [isMenuBooks]);
 
   const toggleArrow = () => {
     if (arrow === 'arrow-down') {
@@ -42,10 +44,16 @@ export const Aside = (props) => {
       <nav className='nav'>
         <h2>
           <NavLink
-            to='books/all'
-            className={classNames(isMenuBooks ? 'nav__genres nav__link-active' : 'nav__genres', {
-              '': !isGenresOpen,
-            })}
+            to='/books/all'
+            className={classNames(
+              'nav__genres',
+              {
+                '': !isGenresOpen,
+              },
+              {
+                'nav__link-active': isMenuBooks,
+              }
+            )}
             onClick={() => {
               toggleArrow();
               setIsMenuBooks(true);
@@ -63,7 +71,7 @@ export const Aside = (props) => {
                 <li className='nav__all-books nav__item'>
                   <NavLink
                     data-test-id={props.isBurger ? 'burger-books' : 'navigation-books'}
-                    to={props.isBurger ? '/books/all' : 'books/all'}
+                    to='/books/all'
                     className={classNames('nav__item', { 'nav__all-books': isGenresOpen })}
                     aria-hidden={false}
                     onClick={() => (props.isBurger ? toggleArrow() : '')}
@@ -77,7 +85,7 @@ export const Aside = (props) => {
                     <NavLink
                       className='nav__link'
                       aria-hidden={false}
-                      to={props.isBurger ? `/books/${category.path}` : `books/${category.path}`}
+                      to={`/books/${category.path}`}
                       state={{
                         props: books,
                       }}
@@ -86,7 +94,6 @@ export const Aside = (props) => {
                           ? dispatch(getFilter(true)) && (props.isBurger ? toggleArrow() : '')
                           : dispatch(getFilter(false)) && (props.isBurger ? toggleArrow() : '') && setIsMenuBooks(true)
                       }
-                      // onClick={toggleArrow}
                     >
                       <div data-test-id={props.isBurger ? `burger-${category.path}` : `navigation-${category.path}`}>
                         {category.name}

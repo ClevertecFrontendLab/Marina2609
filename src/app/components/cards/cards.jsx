@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 
-import { getCategorie } from '../../../redux/actions/actions';
+import { getCategorie } from '../../../store/actions/actions';
 import { BookTitle } from '../book-title/book-title';
 import { BookNotFound } from '../messages/book-not-found/book-not-found';
 import { NoBooks } from '../messages/no-books/no-books';

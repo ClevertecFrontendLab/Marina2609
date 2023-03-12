@@ -4,36 +4,47 @@ import { Provider } from 'react-redux';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { AppLayout } from './app/layouts/app-layout';
-import { BookLayout } from './app/layouts/book-layout';
 import { BookPage } from './pages/book/book-page';
 import { DocumentPage } from './pages/document/document-page';
 import { MainPage } from './pages/main/main-page';
+import { Recovery } from './pages/recovery/recovery';
+import { ResetPassword } from './pages/reset-password/reset-password';
 import { RulePage } from './pages/rule/rule-page';
-import { store } from './redux/store';
+import { SingIn } from './pages/singin/singin';
+import { SingUp } from './pages/singup/singup';
+import { store } from './store/store';
+import { LayoutAuthentication } from './app/layouts/authorization-layout';
 
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <HashRouter>
-    <Provider store={store}>
-      <Routes>
-        <Route path='/' element={<AppLayout />}>
-          {/* <Route path='/' element={<Navigate to='/all' />} /> */}
-          <Route index={true} element={<MainPage />} />
-          <Route path='books/:category' element={<MainPage />} />
-          <Route path='rule' element={<RulePage />} />
-          <Route path='document' element={<DocumentPage />} />
+  <React.StrictMode>
+    <HashRouter>
+      <Provider store={store}>
+        <Routes>
+          <Route path='/' element={<AppLayout />}>
+            <Route index={true} element={<Navigate to='/books/all' />} />
+            <Route path='/books/:category' element={<MainPage />} />
+            <Route path='/books/:category/:id' element={<BookPage />} />
 
-          <Route path='account' element={<MainPage />} />
-          <Route path='logOut' element={<MainPage />} />
-        </Route>
-        <Route path='/books' element={<BookLayout />}>
-          <Route path='/books/:category/:id' element={<BookPage />} />
-        </Route>
-        {/* <Route path="*" element={<Error />} /> */}
-      </Routes>
-    </Provider>
-  </HashRouter>
+            <Route path='/rule' element={<RulePage />} />
+            <Route path='/document' element={<DocumentPage />} />
+          </Route>
+
+          <Route element={<LayoutAuthentication />}>
+            <Route path='/' element={<Navigate to='/auth' />} />
+            <Route path='/auth' element={<SingIn />} />
+            <Route path='/registration' element={<SingUp />} />
+            <Route path='/forgot-pass' element={<Recovery />} />
+            <Route path='/reset-pass' element={<ResetPassword />} />
+
+            <Route path='/account' element={<MainPage />} />
+          </Route>
+          {/* <Route path='*' element={<Error />} /> */}
+        </Routes>
+      </Provider>
+    </HashRouter>
+  </React.StrictMode>
 );

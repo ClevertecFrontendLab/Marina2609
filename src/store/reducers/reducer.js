@@ -29,11 +29,7 @@ const initialState = {
 export const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-        isLoadCategories: true,
-      };
+      return { ...state, isLoading: true, isLoadCategories: true };
 
     case GET_BOOKS:
       return { ...state, isLoading: false, books: payload, error: '' };
@@ -66,3 +62,61 @@ export const reducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+export const fetchBooksRequest = () => ({
+  type: REQUEST,
+});
+
+export const fetchCategoriesRequest = () => ({
+  type: REQUEST,
+});
+
+export const fetchError = (error) => ({
+  type: ERROR,
+  payload: error,
+});
+
+export const fetchCategorie = (categorie) => ({
+  type: CATEGORIE,
+  payload: categorie,
+});
+
+export const fetchBooksSuccess = (books) => ({
+  type: GET_BOOKS,
+  payload: books,
+});
+
+export const fetchCategoriesSuccess = (categories) => ({
+  type: GET_CATEGORIES,
+  payload: categories,
+});
+
+export const fetchBookSuccess = (book) => ({
+  type: GET_BOOK_BY_ID,
+  payload: book,
+});
+
+export const fetchBooksFailure = (error) => ({
+  type: FAILED,
+  payload: error,
+});
+
+export const fetchCategoriesFailure = (error) => ({
+  type: FAILED,
+  payload: error,
+});
+
+export const fetchSearch = (search) => ({
+  type: SEARCH,
+  payload: search,
+});
+
+export const fetchSearchValue = (value) => ({
+  type: SEARCH_VALUE,
+  payload: value,
+});
+
+export const fetchFilter = (filter) => ({
+  type: FILTER,
+  payload: filter,
+});

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getError } from '../../../../redux/actions/actions';
+import { getError } from '../../../../store/actions/actions';
 
 import './error-message.css';
 

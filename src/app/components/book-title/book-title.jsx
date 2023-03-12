@@ -7,5 +7,5 @@ export const BookTitle = (props) => {
 
   const light = useCallback((title) => <HightLight filter={filter} title={title} />, [filter]);
 
-  return <div className=''>{light(title)}</div>;
+  return <div>{light(title)}</div>;
 };

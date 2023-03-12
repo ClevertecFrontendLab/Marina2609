@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import { Aside } from '../../app/components/aside/aside';
 import { Cards } from '../../app/components/cards/cards';
 import { Filter } from '../../app/components/filter/filter';
+import { Footer } from '../../app/components/footer/footer';
+import { Header } from '../../app/components/header/header';
 import { Loader } from '../../app/components/loader/loader';
 import { ErrorMessage } from '../../app/components/messages/error-message/error-message';
 import { Search } from '../../app/components/search/search';
-import { getBooks, getCategories, getError, getSearch } from '../../redux/actions/actions';
+import { fetchBooks, fetchCategories, getError, getSearch } from '../../store/actions/actions';
 
 import './main-page.css';
 
@@ -23,13 +26,12 @@ export const MainPage = () => {
   const search = useSelector((state) => state.reducer.search);
   const [filteredList, setFilteredList] = useState(books);
   const [data, setData] = useState(books);
-
   const { category } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooks());
-    dispatch(getCategories());
+    dispatch(fetchBooks());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   useEffect(() => {
@@ -90,42 +92,55 @@ export const MainPage = () => {
   };
 
   return (
-    <article className='article'>
-      <section className='main-page'>
-        {isLoadCategories && isLoading ? (
-          <Loader />
-        ) : isShow ? (
-          <ErrorMessage />
-        ) : (
-          data && (
-            <React.Fragment>
-              <div className='menu'>
-                <div className='menu-container'>
-                  <Search books={data} />
-                  <Filter books={data} />
-                </div>
-                <div className='main-btns'>
-                  <button
-                    type='button'
-                    className={mainState === 'grid' ? 'btn-grid btn-grid-active' : 'btn-grid'}
-                    onClick={toggle}
-                    aria-label='grid'
-                    data-test-id='button-menu-view-window'
-                  />
-                  <button
-                    type='button'
-                    className={mainState === 'grid' ? 'btn-list' : 'btn-list btn-list-active'}
-                    onClick={toggle}
-                    aria-label='list'
-                    data-test-id='button-menu-view-list'
-                  />
-                </div>
-              </div>
-              <Cards books={search ? search : data} state={mainState} category={category} />
-            </React.Fragment>
-          )
-        )}
-      </section>
-    </article>
+    <React.Fragment>
+      <Header />
+      <main>
+        <div className='wrapper'>
+          <div className='wrapper-main'>
+            <div className='aside__content'>
+              <Aside />
+            </div>
+            <article className='article'>
+              <section className='main-page'>
+                {isLoadCategories && isLoading ? (
+                  <Loader />
+                ) : isShow ? (
+                  <ErrorMessage />
+                ) : (
+                  data && (
+                    <React.Fragment>
+                      <div className='menu'>
+                        <div className='menu-container'>
+                          <Search books={data} />
+                          <Filter books={data} />
+                        </div>
+                        <div className='main-btns'>
+                          <button
+                            type='button'
+                            className={mainState === 'grid' ? 'btn-grid btn-grid-active' : 'btn-grid'}
+                            onClick={toggle}
+                            aria-label='grid'
+                            data-test-id='button-menu-view-window'
+                          />
+                          <button
+                            type='button'
+                            className={mainState === 'grid' ? 'btn-list' : 'btn-list btn-list-active'}
+                            onClick={toggle}
+                            aria-label='list'
+                            data-test-id='button-menu-view-list'
+                          />
+                        </div>
+                      </div>
+                      <Cards books={search ? search : data} state={mainState} category={category} />
+                    </React.Fragment>
+                  )
+                )}
+              </section>
+            </article>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </React.Fragment>
   );
 };
