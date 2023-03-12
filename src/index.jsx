@@ -19,27 +19,29 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <HashRouter>
-    <Provider store={store}>
-      <Routes>
-        <Route path='/' element={<AppLayout />}>
-          <Route path='/' element={<Navigate to='/books/all' />} />
-          <Route path='/books/:category' element={<MainPage />} />
-          <Route path='/books/:category/:id' element={<BookPage />} />
+  <React.StrictMode>
+    <HashRouter>
+      <Provider store={store}>
+        <Routes>
+          <Route path='/' element={<AppLayout />}>
+            <Route index={true} element={<Navigate to='/books/all' />} />
+            <Route path='/books/:category' element={<MainPage />} />
+            <Route path='/books/:category/:id' element={<BookPage />} />
 
-          <Route path='/rule' element={<RulePage />} />
-          <Route path='/document' element={<DocumentPage />} />
-        </Route>
+            <Route path='/rule' element={<RulePage />} />
+            <Route path='/document' element={<DocumentPage />} />
+          </Route>
 
-        <Route path='/auth' element={<SingIn />} />
-        <Route path='/registration' element={<SingUp />} />
-        <Route path='/forgot-pass' element={<Recovery />} />
-        <Route path='/reset-pass' element={<ResetPassword />} />
+          <Route path='/auth' element={<SingIn />} />
+          <Route path='/registration' element={<SingUp />} />
+          <Route path='/forgot-pass' element={<Recovery />} />
+          <Route path='/reset-pass' element={<ResetPassword />} />
 
-        <Route path='/account' element={<MainPage />} />
+          <Route path='/account' element={<MainPage />} />
 
-        {/* <Route path='*' element={<Error />} /> */}
-      </Routes>
-    </Provider>
-  </HashRouter>
+          {/* <Route path='*' element={<Error />} /> */}
+        </Routes>
+      </Provider>
+    </HashRouter>
+  </React.StrictMode>
 );

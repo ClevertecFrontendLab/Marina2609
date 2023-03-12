@@ -75,9 +75,7 @@ export const SingIn = () => {
   return (
     <section className='authentication' data-test-id='auth'>
       {isAuth && <Loader />}
-
       <div className='authentication__logo'>Cleverland</div>
-
       {authError && isError ? (
         <div className='authentication__window_error'>
           <div className='authentication__header_error' data-test-id='status-block'>
@@ -181,8 +179,6 @@ export const SingIn = () => {
           </div>
         </div>
       )}
-      <div className=''>pihoozzz</div>
-      <div className=''>5123260</div>
     </section>
   );
 };

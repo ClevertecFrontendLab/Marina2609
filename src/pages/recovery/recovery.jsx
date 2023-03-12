@@ -16,18 +16,10 @@ export const Recovery = () => {
   const isRecovery = useSelector((state) => state.recovery.isRecovery);
   const recovery = useSelector((state) => state.recovery.recovery);
   const recoveryError = useSelector((state) => state.recovery.recoveryError);
-  const token = localStorage.getItem('token');
   const [sendEmailSuccess, setSendEmailSuccess] = useState(recovery);
   const [searchParams] = useSearchParams();
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (token) {
-      navigate('/');
-    }
-  }, [navigate, token]);
 
   useEffect(() => {
     if (searchParams.get('code')) {

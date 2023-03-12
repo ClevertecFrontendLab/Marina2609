@@ -106,7 +106,7 @@
     /* position: fixed; */
     position: absolute;
     top: 0;
-    z-index: 2;
+    z-index: 20;
     display: flex;
     flex-flow: column;
     max-width: 502px;

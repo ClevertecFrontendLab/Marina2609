@@ -47,11 +47,11 @@ export const SingUp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  useEffect(() => {
-    if (token) {
-      navigate('/');
-    }
-  }, [navigate, token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate('/books/all');
+  //   }
+  // }, [navigate, token]);
 
   useEffect(() => {
     if (isRegistr) {
