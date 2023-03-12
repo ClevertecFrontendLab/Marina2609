@@ -18,8 +18,16 @@ export const Recovery = () => {
   const recoveryError = useSelector((state) => state.recovery.recoveryError);
   const [sendEmailSuccess, setSendEmailSuccess] = useState(recovery);
   const [searchParams] = useSearchParams();
+  const token = localStorage.getItem('token');
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      navigate('/books/all');
+    }
+  }, [navigate, token]);
 
   useEffect(() => {
     if (searchParams.get('code')) {
