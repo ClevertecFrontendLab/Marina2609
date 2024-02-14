@@ -43,13 +43,13 @@ export const Sidebar = () => {
     const menuItems = sidebarItems.map((item) => (
         <Menu.Item
             key={item.key}
-            style={{
-                padding: collapsed
-                    ? '0 0 44px 0'
+            className={classNames(
+                collapsed
+                    ? 'menu-item-collapsed'
                     : mobileVersion
-                    ? '0 0 40px 8px'
-                    : '0 0 40px 17px',
-            }}
+                    ? 'menu-item-mobile'
+                    : 'menu-item',
+            )}
         >
             {(collapsed && item.icon) || (!collapsed && item.icon)}
             {!collapsed && item.label}
