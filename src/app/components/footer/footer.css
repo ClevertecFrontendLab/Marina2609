@@ -1,0 +1,101 @@
+.footer-container {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 24px 40px;
+    flex: 0 0 auto;
+}
+
+.footer__btn {
+    padding: 15px 16px 9px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2f54eb;
+}
+
+.footer-card {
+    background: #fff;
+    padding: 12px 12px;
+    max-width: 240px;
+    width: 100%;
+}
+
+.ant-card-actions {
+    display: flex;
+}
+
+.action-item {
+    padding: 12px 0 6px;
+}
+
+.meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8c8c8c;
+}
+
+.meta__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2f54eb;
+}
+
+.ant-card-meta-detail {
+    display: grid;
+    gap: 8px;
+}
+
+.anticon-android,
+.anticon-apple {
+    width: 14px;
+    height: 14px;
+}
+
+.anticon-android {
+    padding-left: 1px;
+    margin-right: 7px;
+}
+
+.anticon-apple {
+    margin: 0 7px 0 16px;
+}
+
+@media screen and (max-width: 490px) {
+    .footer-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
+
+    .footer-card {
+        max-width: 360px;
+        width: 100%;
+    }
+
+    .footer__btn {
+        padding: 24px 16px 9px;
+    }
+
+    .meta {
+        text-align: center;
+    }
+
+    .action-item {
+        display: flex;
+        justify-content: center;
+    }
+}
