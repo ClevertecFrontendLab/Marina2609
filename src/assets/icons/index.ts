@@ -1,0 +1,9 @@
+export { default as CalendarIcon } from './CalendadrIcon.tsx';
+export { default as HeartIcon } from './HeartIcon.tsx';
+export { default as TrophyIcon } from './TrophyIcon.tsx';
+export { default as ProfileIcon } from './ProfileIcon.tsx';
+export { default as ExitIcon } from './ExitIcon.tsx';
+export { default as CollapsedOpenIcon } from './CollapsedOpenIcon.tsx';
+export { default as CollapsedCloseIcon } from './CollapsedCloseIcon.tsx';
+export { default as LogoDesktopIcon } from './LogoDesktopIcon.tsx';
+export { default as LogoMinIcon } from './LogoMinIcon.tsx';

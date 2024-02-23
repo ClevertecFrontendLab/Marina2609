@@ -1,0 +1,83 @@
+.toggle {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    right: -20px;
+    cursor: pointer;
+    background-color: #fff;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    color: #8c8c8c;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        color: #000;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 20px solid #fff;
+        border-bottom: 8px solid transparent;
+        bottom: -8px;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 20px solid #fff;
+        border-top: 8px solid transparent;
+        top: -8px;
+    }
+}
+
+.toggle span {
+    width: 14px;
+}
+
+.toggle svg {
+    margin-top: 20px;
+}
+
+.sidebar__icon {
+    overflow: visible;
+}
+
+@media screen and (max-width: 710px) {
+    .toggle {
+        top: 24px;
+        transform: translateY(0);
+        width: 24px;
+        height: 40px;
+        right: -24px;
+
+        &::before {
+            border-left: 24px solid #fff;
+            border-bottom: 4px solid transparent;
+            bottom: -4px;
+        }
+
+        &::after {
+            border-left: 24px solid #fff;
+            border-top: 4px solid transparent;
+            top: -4px;
+        }
+    }
+
+    .toggle svg {
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .sidebar__icon,
+    .logout__btn svg {
+        display: none;
+    }
+}

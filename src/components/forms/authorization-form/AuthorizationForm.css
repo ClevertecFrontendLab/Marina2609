@@ -1,0 +1,446 @@
+.ant-form {
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+}
+
+.ant-form-item {
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    margin-bottom: 24px;
+    vertical-align: top;
+    transition: none;
+}
+
+.ant-row {
+    display: flex;
+    flex-flow: row wrap;
+    min-width: 0;
+}
+
+.ant-form-vertical .ant-form-item-row {
+    flex-direction: column;
+}
+
+.ant-col {
+    position: relative;
+    max-width: 100%;
+    min-height: 1px;
+}
+
+.ant-form-item-control {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ant-form-item-control-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+}
+
+.ant-form-item-control-input-content {
+    flex: auto;
+    max-width: 100%;
+}
+
+.ant-input-affix-wrapper {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    background-image: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    height: 40px;
+}
+
+.ant-input-affix-wrapper::before {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+}
+
+.ant-input-suffix {
+    display: flex;
+    flex: none;
+    align-items: center;
+    margin-left: 4px;
+}
+
+.ant-input-group-wrapper {
+    display: inline-block;
+    width: 100%;
+    text-align: start;
+    vertical-align: top;
+}
+
+.ant-input-group {
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+form.auth-page-module__authContainer--IN7VY .ant-input-wrapper {
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    height: 40px;
+}
+
+.ant-input-group-addon {
+    display: table-cell;
+    width: 1px;
+    white-space: nowrap;
+    vertical-align: middle;
+    position: relative;
+    padding: 0 11px;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fafafa;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.ant-input-group-addon:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
+
+form.auth-page-module__authContainer--IN7VY .ant-input-group-addon {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #262626;
+}
+
+.ant-input {
+    margin: 0;
+    padding: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.ant-input-group > .ant-input {
+    display: table-cell;
+}
+
+.ant-input-group .ant-input {
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: inherit;
+}
+
+form.auth-page-module__authContainer--IN7VY .ant-input {
+    height: 100%;
+}
+
+.ant-input-group > .ant-input:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ant-form-item-explain,
+.ant-form-item-extra {
+    clear: both;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+    line-height: 1.5715;
+    transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.ant-form-item-explain-connected {
+    width: 100%;
+}
+
+.ant-form-item-with-help .ant-form-item-explain {
+    height: auto;
+    opacity: 1;
+}
+
+.anticon {
+    display: inline-flex;
+    align-items: center;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -0.125em;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ant-input-password-icon.anticon {
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ant-input-password .ant-input {
+    border: none;
+}
+
+.ant-input {
+    outline: none;
+}
+
+.ant-input-password {
+    border-color: #d9d9d9;
+}
+
+.ant-input-wrapper .ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper-focused {
+    border-color: #40a9ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    border-right-width: 1px;
+    outline: 0;
+}
+
+/* \ */
+/* 
+form.auth-page-module__authContainer--IN7VY .auth-page-module__actionsContainer--2h5Ha {
+    margin-top: 50px;
+    margin-bottom: 28px;
+    justify-content: space-between;
+}
+
+.ant-form-item {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    vertical-align: top;
+}
+
+.ant-form-vertical .ant-form-item-row {
+    flex-direction: column;
+}
+
+.ant-col {
+    position: relative;
+    max-width: 100%;
+    min-height: 1px;
+}
+
+.ant-form-item-control {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ant-form .ant-form-item .ant-form-item-control {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.ant-form-item-control:first-child:not([class^='ant-col-']):not([class*=' ant-col-']) {
+    width: 100%;
+}
+
+.ant-form-item-control-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+}
+
+.ant-form-item-control-input-content {
+    flex: auto;
+    max-width: 100%;
+}
+
+.ant-checkbox-wrapper {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    display: inline-flex;
+    align-items: baseline;
+    line-height: unset;
+    cursor: pointer;
+}
+
+.ant-checkbox {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    top: 0.2em;
+    line-height: 1;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+}
+
+form.auth-page-module__authContainer--IN7VY .ant-checkbox-wrapper span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.ant-checkbox-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+input:not([type='range']) {
+    touch-action: manipulation;
+}
+
+input[type='checkbox'] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.ant-form input[type='checkbox'] {
+    line-height: normal;
+}
+
+.ant-checkbox-wrapper.ant-checkbox-wrapper-in-form-item input[type='checkbox'] {
+    width: 14px;
+    height: 14px;
+}
+
+.ant-checkbox-inner {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    direction: ltr;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    border-collapse: separate;
+    transition: all 0.3s;
+    background-color: #2f54eb;
+    border-color: #2f54eb;
+}
+
+form.auth-page-module__authContainer--IN7VY .ant-checkbox-wrapper span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+    position: absolute;
+    display: table;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg) scale(1) translate(-50%, -50%);
+    opacity: 1;
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    content: ' ';
+    top: 50%;
+    left: 21.5%;
+    width: 5.71428571px;
+    height: 9.14285714px;
+}
+
+.ant-checkbox-checked::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #1890ff;
+    border-radius: 2px;
+    visibility: hidden;
+    animation: antCheckboxEffect 0.36s ease-in-out;
+    animation-fill-mode: backwards;
+    content: '';
+}
+
+.ant-checkbox + span {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+form.auth-page-module__authContainer--IN7VY .ant-checkbox-wrapper span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+
+.ant-checkbox-wrapper::after {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  content: '\a0';
+} */
