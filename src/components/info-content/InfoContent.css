@@ -1,0 +1,47 @@
+.info-content {
+    padding: 24px;
+    flex: 1;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.ant-card-bordered {
+    border: none;
+}
+
+.business-card {
+    background: #fff;
+    padding: 24px 27px 24px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #262626;
+}
+
+.business-card .ant-card-body {
+    padding: 0;
+}
+
+.business-card .ant-card-body .ant-typography {
+    margin: 0;
+    line-height: unset;
+}
+
+.info__icon path {
+    fill: #2f54eb;
+}
+
+.cards-actions {
+    display: flex;
+    gap: 16px;
+}
+
+@media screen and (max-width: 490px) {
+    .cards-actions {
+        flex-wrap: wrap;
+    }
+}
