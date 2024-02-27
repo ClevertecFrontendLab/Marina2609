@@ -1,1 +1,12 @@
-export { MainPage } from './main-page/main-page';
+export { MainPage } from './main-page/MainPage';
+export { WelcomePage } from './welcome-page/WelcomePage';
+export { ConfirmEmailPage } from './confirm-email-page/ConfirmEmailPage';
+export { ErrorAuthPage } from './error-auth-page/ErrorAuthPage';
+export { RegistrationSuccessPage } from './registration-success-page/RegistrationSuccessPage';
+export { ErrorRegistrationPage } from './error-regist-page/ErrorRegistrationPage';
+export { ErrorExistPage } from './error-exist-page/ErrorExistPage';
+export { ErrorEmailNoExistPage } from './error-email-no-exist-page/ErrorEmailNoExistPage';
+export { ErrorEmailPage } from './error-email-page/ErrorEmailPage';
+export { ErrorPasswordPage } from './error-password-page/ErrorPasswordPage';
+export { PasswordSuccessPage } from './password-success-page/PasswordSuccessPage';
+export { ChangePasswordPage } from './change-password-page/ChangePasswordPage';
