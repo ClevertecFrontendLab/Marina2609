@@ -42,3 +42,46 @@ export type CardProps = {
     icon?: ReactNode;
     title?: string;
 } & ComponentPropsWithoutRef<'div'>;
+
+export type TabsData = {
+    label: string;
+    key: string;
+};
+
+export type SubmitProps = {
+    isEmailTouched: boolean;
+    setIsEmailTouched: (value: boolean) => void;
+    isSubmitDisabled: boolean;
+};
+
+export interface AuthForm {
+    email: string;
+    password: string;
+    rememberMe?: boolean;
+}
+
+export interface RegistForm {
+    email: string;
+    password: string;
+    confirmPassword?: string;
+}
+
+export interface RegistValues {
+    email: string;
+    password: string;
+}
+
+export interface Confirm {
+    email: string;
+    code: string;
+}
+
+export interface ChangePasswordValues {
+    changePassword: string;
+    changeConfirmPassword: string;
+}
+
+export interface PasswordData {
+    password: string;
+    confirmPassword: string;
+}
