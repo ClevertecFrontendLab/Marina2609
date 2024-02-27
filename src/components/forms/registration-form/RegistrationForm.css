@@ -1,0 +1,37 @@
+.registration-container {
+    margin: 8px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.ant-form-item-explain-connected {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 2px 0 28px;
+}
+
+.registration__btns {
+    margin: 60px 0 -10px;
+}
+
+.ant-form-item-explain-error {
+    color: #ff4d4f;
+}
+
+@media screen and (max-width: 600px) {
+    .registration-container .ant-form-item-with-help {
+        margin-bottom: 33px;
+    }
+
+    .registration-container {
+        margin: 0;
+    }
+
+    .ant-form-item-control div .ant-form-item-explain-connected {
+        margin-bottom: 10px;
+    }
+
+    .registration__btns {
+        margin: 52px 0 -2px;
+    }
+}
