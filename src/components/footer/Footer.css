@@ -17,6 +17,12 @@
     letter-spacing: 0em;
     text-align: center;
     color: #2f54eb;
+    cursor: pointer;
+}
+
+.footer__btn:hover,
+.meta__title:hover {
+    color: #1890ff;
 }
 
 .footer-card {

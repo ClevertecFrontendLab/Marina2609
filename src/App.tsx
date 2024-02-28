@@ -17,6 +17,7 @@ import {
     ErrorExistPage,
     ErrorPasswordPage,
     ErrorRegistrationPage,
+    CommentsPage,
     PasswordSuccessPage,
     RegistrationSuccessPage,
     WelcomePage,
@@ -45,6 +46,7 @@ export const App = () => {
                             </Suspense>
                         }
                     />
+                    <Route path='feedbacks' element={<CommentsPage />} />
                 </Route>
                 <Route path='/auth' element={<AuthLayout />}>
                     <Route index element={<AuthorizationForm />} />

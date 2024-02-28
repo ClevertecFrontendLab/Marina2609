@@ -102,4 +102,14 @@ button {
 
 .ant-layout {
     background: transparent;
+    width: 100%;
+}
+
+.page-wrapper {
+    background-image: url('../../../assets/images/MainPageLight.jpg');
+    background-size: cover;
+    background-position: center;
+    flex: 1 0 auto;
+
+    display: grid;
 }

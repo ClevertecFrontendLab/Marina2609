@@ -1,1 +1,8 @@
+.meta__title,
+.action-item {
+    cursor: pointer;
+}
 
+.action-item:hover {
+    color: #1890ff;
+}

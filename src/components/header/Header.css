@@ -29,6 +29,7 @@
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
+    color: #8c8c8c;
 }
 
 .ant-breadcrumb ol {
@@ -43,8 +44,20 @@
     color: rgba(0, 0, 0, 0.85);
 }
 
-.ant-breadcrumb-separator {
+ol > li:last-child > .ant-breadcrumb-separator {
     display: none;
+}
+
+.ant-breadcrumb-separator {
+    margin: 0 10px;
+}
+
+.route-active {
+    color: #262626;
+}
+
+.ant-breadcrumb-link:hover {
+    color: #2f54eb;
 }
 
 .settings__link {

@@ -60,6 +60,11 @@
     text-align: left;
 }
 
+.ant-menu-item:hover,
+.logout__btn:hover {
+    color: #1890ff;
+}
+
 .ant-menu-item-only-child {
     display: flex;
     justify-content: center;

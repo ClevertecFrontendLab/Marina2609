@@ -35,6 +35,11 @@
     display: flex;
     justify-content: center;
     gap: 8px;
+    cursor: pointer;
+}
+
+.card-activity:hover {
+    color: #1890ff;
 }
 
 .ant-card-actions {

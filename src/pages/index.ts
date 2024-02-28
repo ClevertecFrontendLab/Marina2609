@@ -1,5 +1,6 @@
 export { MainPage } from './main-page/MainPage';
 export { WelcomePage } from './welcome-page/WelcomePage';
+export { CommentsPage } from './comments-page/CommentsPage';
 export { ConfirmEmailPage } from './confirm-email-page/ConfirmEmailPage';
 export { ErrorAuthPage } from './error-auth-page/ErrorAuthPage';
 export { RegistrationSuccessPage } from './registration-success-page/RegistrationSuccessPage';

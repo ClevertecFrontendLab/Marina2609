@@ -10,7 +10,9 @@ export const AppLayout = () => {
                 <Sidebar />
                 <Layout className={'content-page'}>
                     <HeaderContent />
-                    <Outlet />
+                    <div className='page-wrapper'>
+                        <Outlet />
+                    </div>
                 </Layout>
             </Layout>
         </div>
